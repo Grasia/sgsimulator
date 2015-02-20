@@ -1,0 +1,11 @@
+.project
+.settings
+.classpath
+target
+.settings/
+# Mac
+# Maven
+log/
+target/
+*.class
+*~
