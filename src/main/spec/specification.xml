@@ -2,7 +2,7 @@
 <project cid="30" version="1.2">
 <projectproperties>
 <projectproperty id="extfolder" module="IDK"  name="Extension Module Folder" value="ext"  tooltip="Folder where the IDE will find its new modules" />
- <openeddiagram>Grid deployment</openeddiagram> <openeddiagram>intial state CT1</openeddiagram> <openeddiagram>initial state CT3</openeddiagram> <openeddiagram>Switch off elements to reduce excess of energy</openeddiagram> <openeddiagram>System agents</openeddiagram> <openeddiagram>Deliver Power For High demand</openeddiagram> <openeddiagram>smartgrid</openeddiagram></projectproperties>
+ <openeddiagram>Grid deployment</openeddiagram> <openeddiagram>intial state CT1</openeddiagram> <openeddiagram>initial state CT3</openeddiagram> <openeddiagram>Switch off elements to reduce excess of energy</openeddiagram> <openeddiagram>System agents</openeddiagram> <openeddiagram>Deliver Power For High demand</openeddiagram> <openeddiagram>smartgrid</openeddiagram> <openeddiagram>Implementation</openeddiagram></projectproperties>
 <leafpackages>
    <path>
     <package id="Project"/>
@@ -31,6 +31,10 @@
    <path>
     <package id="Project"/>
     <package id="initial state CT3"/>
+   </path>
+   <path>
+    <package id="Project"/>
+    <package id="Implementation"/>
    </path>
 </leafpackages>
 <objects>
@@ -162,6 +166,66 @@
 </objectproperty>
 <mapproperties>
 <key id="NumberInstances">1</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="INGENIASCodeComponent0" type="ingenias.editor.entities.INGENIASCodeComponent">
+<mapproperties>
+<key id="Language"></key>
+<key id="Code">	System.out.println(getAgentID() + &quot; executing -&gt; &quot; + getID() + &quot;:&quot;
+				+ getType());
+		if (!eaSMClient.isReady())
+			eaSMClient.tryItAgainAfter(5);
+		try {			
+			// Switches on the PV
+			eaSMClient.sendOrder(new mired.ucm.remote.orders.RemoteSwitchOn(
+					&quot;Solar_11&quot;));
+			System.out.println(eaSMClient.getTransformationCentreSensors());
+		} catch (java.rmi.RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="INGENIASCodeComponent1" type="ingenias.editor.entities.INGENIASCodeComponent">
+<mapproperties>
+<key id="Language"></key>
+<key id="Code">	// REPLACE THIS COMMENT WITH YOUR CODE
+		System.out.println(getAgentID() + &quot; executing -&gt; &quot; + getID() + &quot;:&quot;
+				+ getType());
+		
+		if (!eaSMClient.isReady())
+			eaSMClient.tryItAgainAfter(5);
+
+		try {
+			// Charges the battery
+			if (eaSMClient.getBatteryEnergy(&quot;Battery_31&quot;) &lt;= 10000) {
+				System.out.println(getAgentID() + &quot; charging&quot;);
+				eaSMClient
+						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
+								&quot;Battery_31&quot;, 10000));
+			}
+		} catch (java.rmi.RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		try {
+			// Discharges battery
+			if (eaSMClient.getBatteryEnergy(&quot;Battery_31&quot;) &gt; 10000) {
+				System.out.println(getAgentID() + &quot; discharging&quot;);
+				eaSMClient
+						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
+								&quot;Battery_31&quot;, 0));
+			}
+		} catch (java.rmi.RemoteException e) {
+			e.printStackTrace();
+		}
+
+		eaSMClient.tryItAgainAfter(10);</key>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
@@ -559,32 +623,13 @@
 </object>
 </objects>
 <relationships>
-<relationship id="0" type="ingenias.editor.entities.OHasGroup">
-<object id="0" type="ingenias.editor.entities.OHasGroup">
+<relationship id="2" type="ingenias.editor.entities.GTPursues">
+<object id="2" type="ingenias.editor.entities.GTPursues">
 <mapproperties>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="OHasGroupsource" type="ingenias.editor.entities.OHasGroupsourceRole" dgcid="313734668">
-<mapproperties>
-<key id="Cardinality"></key>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="TransformationCenters" class="ingenias.editor.entities.OrganizationGroup" roleName="OHasGrouptarget" type="ingenias.editor.entities.OHasGrouptargetRole" dgcid="1210313292">
-<mapproperties>
-<key id="Cardinality"></key>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
-<relationship id="3" type="ingenias.editor.entities.GTPursues">
-<object id="3" type="ingenias.editor.entities.GTPursues">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="2060134840">
+<role idEntity="ReducePowerGridConsumption" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="1862210982">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -614,19 +659,38 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </role></relationship>
-<relationship id="2" type="ingenias.editor.entities.GTPursues">
-<object id="2" type="ingenias.editor.entities.GTPursues">
+<relationship id="3" type="ingenias.editor.entities.GTPursues">
+<object id="3" type="ingenias.editor.entities.GTPursues">
 <mapproperties>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="ReducePowerGridConsumption" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="1862210982">
+<role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="2060134840">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </role><role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="313734668">
 <mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="0" type="ingenias.editor.entities.OHasGroup">
+<object id="0" type="ingenias.editor.entities.OHasGroup">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="OHasGroupsource" type="ingenias.editor.entities.OHasGroupsourceRole" dgcid="313734668">
+<mapproperties>
+<key id="Cardinality"></key>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="TransformationCenters" class="ingenias.editor.entities.OrganizationGroup" roleName="OHasGrouptarget" type="ingenias.editor.entities.OHasGrouptargetRole" dgcid="1210313292">
+<mapproperties>
+<key id="Cardinality"></key>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
@@ -917,25 +981,6 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </role></relationship>
-<relationship id="16" type="ingenias.editor.entities.AContainsME">
-<object id="16" type="ingenias.editor.entities.AContainsME">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
-</mapproperties>
-</object>
-<role idEntity="PVInitialMentalState" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="820534435">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="MentalInstanceSpecification0" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1847873008">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
-</mapproperties>
-</role></relationship>
 <relationship id="30" type="ingenias.editor.entities.AContainsME">
 <object id="30" type="ingenias.editor.entities.AContainsME">
 <mapproperties>
@@ -953,6 +998,25 @@
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="16" type="ingenias.editor.entities.AContainsME">
+<object id="16" type="ingenias.editor.entities.AContainsME">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</object>
+<role idEntity="PVInitialMentalState" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="820534435">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="MentalInstanceSpecification0" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1847873008">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
 </mapproperties>
 </role></relationship>
 <relationship id="31" type="ingenias.editor.entities.AContainsME">
@@ -993,6 +1057,40 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </role></relationship>
+<relationship id="34" type="ingenias.editor.entities.CDUsesCode">
+<object id="34" type="ingenias.editor.entities.CDUsesCode">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="INGENIASCodeComponent0" class="ingenias.editor.entities.INGENIASCodeComponent" roleName="CDUsesCodetarget" type="ingenias.editor.entities.CDUsesCodetargetRole" dgcid="1682789748">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="Enable PV if high demand and disable if low" class="ingenias.editor.entities.Task" roleName="CDUsesCodesource" type="ingenias.editor.entities.CDUsesCodesourceRole" dgcid="712212391">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="35" type="ingenias.editor.entities.CDUsesCode">
+<object id="35" type="ingenias.editor.entities.CDUsesCode">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="INGENIASCodeComponent1" class="ingenias.editor.entities.INGENIASCodeComponent" roleName="CDUsesCodetarget" type="ingenias.editor.entities.CDUsesCodetargetRole" dgcid="2131959304">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="CDUsesCodesource" type="ingenias.editor.entities.CDUsesCodesourceRole" dgcid="192982295">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
 </relationships>
 <models> 
  <model id="smartgrid" type="ingenias.editor.models.OrganizationModelModelJGraph">
@@ -1009,7 +1107,7 @@
 
 	<graph>
 			
-	<node id="0" nid="node0" type="OHasGroup">
+	<node id="0" nid="node8" type="OHasGroup">
 		<attr name="bounds">
 			<rectangle x="45" y="81" width="70" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1035,7 +1133,7 @@
 
 
 	</connected>
-	<connected id="node6">
+	<connected id="node2">
 
 
 
@@ -1053,14 +1151,14 @@
 	</connected>
 	</node>
 			
-	<node id="ReducePowerGridConsumption" nid="node5" type="Goal">
+	<node id="ReducePowerGridConsumption" nid="node3" type="Goal">
 		<attr name="bounds">
 			<rectangle x="222" y="0" width="228" height="58"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="SmartGrid" nid="node6" type="Organization">
+	<node id="SmartGrid" nid="node2" type="Organization">
 		<attr name="bounds">
 			<rectangle x="42" y="16" width="76" height="40"></rectangle>		</attr>
 		<attr name="view">
@@ -1071,7 +1169,7 @@
 
 	</node>
 			
-	<node id="1" nid="node2" type="OHasMember">
+	<node id="1" nid="node6" type="OHasMember">
 		<attr name="bounds">
 			<rectangle x="40" y="176" width="81" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1080,7 +1178,7 @@
 
 
 
-	<connected id="node8">
+	<connected id="node0">
 
 
 
@@ -1115,7 +1213,7 @@
 	</connected>
 	</node>
 			
-	<node id="2" nid="node3" type="GTPursues">
+	<node id="2" nid="node5" type="GTPursues">
 		<attr name="bounds">
 			<rectangle x="138" y="26" width="65" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1124,7 +1222,7 @@
 
 
 
-	<connected id="node6">
+	<connected id="node2">
 
 
 
@@ -1140,7 +1238,7 @@
 
 
 	</connected>
-	<connected id="node5">
+	<connected id="node3">
 
 
 
@@ -1159,7 +1257,7 @@
 	</connected>
 	</node>
 			
-	<node id="3" nid="node1" type="GTPursues">
+	<node id="3" nid="node7" type="GTPursues">
 		<attr name="bounds">
 			<rectangle x="144" y="62" width="65" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1168,7 +1266,7 @@
 
 
 
-	<connected id="node6">
+	<connected id="node2">
 
 
 
@@ -1184,7 +1282,7 @@
 
 
 	</connected>
-	<connected id="node7">
+	<connected id="node1">
 
 
 
@@ -1203,7 +1301,7 @@
 	</connected>
 	</node>
 			
-	<node id="TCManager" nid="node8" type="Role">
+	<node id="TCManager" nid="node0" type="Role">
 		<attr name="bounds">
 			<rectangle x="44" y="206" width="72" height="40"></rectangle>		</attr>
 		<attr name="view">
@@ -1225,7 +1323,7 @@
 
 	</node>
 			
-	<node id="LookForReducedBilling" nid="node7" type="Goal">
+	<node id="LookForReducedBilling" nid="node1" type="Goal">
 		<attr name="bounds">
 			<rectangle x="234" y="90" width="170" height="58"></rectangle>		</attr>
 
@@ -1233,11 +1331,11 @@
 	</node><parentship>
 </parentship>
 <entityconstraints>
-<cellconstraint id="node6:INGENIAS">
-<currentcell id="node6" height="56" width="63"/>
+<cellconstraint id="node2:INGENIAS">
+<currentcell id="node2" height="56" width="63"/>
 </cellconstraint>
-<cellconstraint id="node8:INGENIAS">
-<currentcell id="node8" height="43" width="70"/>
+<cellconstraint id="node0:INGENIAS">
+<currentcell id="node0" height="43" width="70"/>
 </cellconstraint>
 <cellconstraint id="node4:INGENIAS">
 <currentcell id="node4" height="55" width="144"/>
@@ -1250,7 +1348,7 @@
 
 	<layout>
 			
-	<node id="node0">
+	<node id="node8">
 		<attr name="bounds">
 			<rectangle x="45" y="81" width="70" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1261,14 +1359,14 @@
 
 	</node>
 			
-	<node id="node5">
+	<node id="node3">
 		<attr name="bounds">
 			<rectangle x="222" y="0" width="228" height="58"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="node6">
+	<node id="node2">
 		<attr name="bounds">
 			<rectangle x="42" y="16" width="76" height="40"></rectangle>		</attr>
 		<attr name="view">
@@ -1279,7 +1377,7 @@
 
 	</node>
 			
-	<node id="node2">
+	<node id="node6">
 		<attr name="bounds">
 			<rectangle x="40" y="176" width="81" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1290,7 +1388,7 @@
 
 	</node>
 			
-	<node id="node3">
+	<node id="node5">
 		<attr name="bounds">
 			<rectangle x="138" y="26" width="65" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1301,7 +1399,7 @@
 
 	</node>
 			
-	<node id="node1">
+	<node id="node7">
 		<attr name="bounds">
 			<rectangle x="144" y="62" width="65" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1312,7 +1410,7 @@
 
 	</node>
 			
-	<node id="node8">
+	<node id="node0">
 		<attr name="bounds">
 			<rectangle x="44" y="206" width="72" height="40"></rectangle>		</attr>
 		<attr name="view">
@@ -1334,7 +1432,7 @@
 
 	</node>
 			
-	<node id="node7">
+	<node id="node1">
 		<attr name="bounds">
 			<rectangle x="234" y="90" width="170" height="58"></rectangle>		</attr>
 
@@ -1464,7 +1562,7 @@
 			
 	<node id="17" nid="node6" type="WFConsumes">
 		<attr name="bounds">
-			<rectangle x="414" y="150" width="80" height="15"></rectangle>		</attr>
+			<rectangle x="419" y="149" width="80" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -1570,7 +1668,7 @@
 			
 	<node id="CheckAgain" nid="node2" type="FrameFact">
 		<attr name="bounds">
-			<rectangle x="520" y="141" width="75" height="32"></rectangle>		</attr>
+			<rectangle x="531" y="140" width="75" height="32"></rectangle>		</attr>
 
 
 	</node><parentship>
@@ -1632,7 +1730,7 @@
 			
 	<node id="node6">
 		<attr name="bounds">
-			<rectangle x="414" y="150" width="80" height="15"></rectangle>		</attr>
+			<rectangle x="419" y="149" width="80" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -1672,7 +1770,7 @@
 			
 	<node id="node2">
 		<attr name="bounds">
-			<rectangle x="520" y="141" width="75" height="32"></rectangle>		</attr>
+			<rectangle x="531" y="140" width="75" height="32"></rectangle>		</attr>
 
 
 	</node>
@@ -1692,9 +1790,9 @@
 
 	<graph>
 			
-	<node id="SMClient" nid="node9" type="InternalApplication">
+	<node id="SMClient" nid="node8" type="InternalApplication">
 		<attr name="bounds">
-			<rectangle x="247" y="12" width="451" height="85"></rectangle>		</attr>
+			<rectangle x="260" y="11" width="451" height="85"></rectangle>		</attr>
 		<attr name="view">
 			<string>UML</string>
 		</attr>
@@ -1703,7 +1801,7 @@
 
 	</node>
 			
-	<node id="TCManager" nid="node7" type="Role">
+	<node id="TCManager" nid="node6" type="Role">
 		<attr name="bounds">
 			<rectangle x="37" y="103" width="70" height="43"></rectangle>		</attr>
 
@@ -1717,7 +1815,7 @@
 
 	</node>
 			
-	<node id="33" nid="node11" type="GTPursues">
+	<node id="33" nid="node10" type="GTPursues">
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -1726,7 +1824,7 @@
 			<rectangle x="175" y="160" width="65" height="15"></rectangle>		</attr>
 
 
-	<connected id="node7"><attr name="extraLabels">
+	<connected id="node6"><attr name="extraLabels">
 			<array>
 
 </array>
@@ -1748,17 +1846,6 @@
 	</connected>
 	</node>
 			
-	<node id="AssociatedUnit" nid="node6" type="FrameFact">
-		<attr name="bounds">
-			<rectangle x="117" y="256" width="178" height="55"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
 	<node id="32" nid="node0" type="GTPursues">
 		<attr name="view">
 			<string>ingenias</string>
@@ -1768,7 +1855,7 @@
 			<rectangle x="172" y="126" width="65" height="15"></rectangle>		</attr>
 
 
-	<connected id="node7"><attr name="extraLabels">
+	<connected id="node6"><attr name="extraLabels">
 			<array>
 
 </array>
@@ -1790,14 +1877,14 @@
 	</connected>
 	</node>
 			
-	<node id="Battery Controller" nid="node10" type="Agent">
+	<node id="Battery Controller" nid="node9" type="Agent">
 		<attr name="bounds">
 			<rectangle x="15" y="188" width="110" height="57"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="PV Controller" nid="node8" type="Agent">
+	<node id="PV Controller" nid="node7" type="Agent">
 		<attr name="bounds">
 			<rectangle x="30" y="0" width="81" height="57"></rectangle>		</attr>
 
@@ -1813,7 +1900,7 @@
 
 
 
-	<connected id="node10">
+	<connected id="node9">
 
 
 
@@ -1829,7 +1916,7 @@
 
 
 	</connected>
-	<connected id="node7">
+	<connected id="node6">
 
 
 
@@ -1850,14 +1937,14 @@
 			
 	<node id="5" nid="node4" type="ApplicationBelongsTo">
 		<attr name="bounds">
-			<rectangle x="120" y="99" width="114" height="15"></rectangle>		</attr>
+			<rectangle x="126" y="98" width="114" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 
 
-	<connected id="node7">
+	<connected id="node6">
 
 
 
@@ -1873,7 +1960,7 @@
 
 
 	</connected>
-	<connected id="node9">
+	<connected id="node8">
 
 
 
@@ -1908,7 +1995,7 @@
 
 
 
-	<connected id="node8">
+	<connected id="node7">
 
 
 
@@ -1924,7 +2011,7 @@
 
 
 	</connected>
-	<connected id="node7">
+	<connected id="node6">
 
 
 
@@ -1944,11 +2031,8 @@
 	</node><parentship>
 </parentship>
 <entityconstraints>
-<cellconstraint id="node9:INGENIAS">
-<currentcell id="node9" height="46" width="125"/>
-</cellconstraint>
-<cellconstraint id="node6:INGENIAS">
-<currentcell id="node6" height="32" width="96"/>
+<cellconstraint id="node8:INGENIAS">
+<currentcell id="node8" height="46" width="125"/>
 </cellconstraint>
 </entityconstraints>
 
@@ -1958,9 +2042,9 @@
 
 	<layout>
 			
-	<node id="node9">
+	<node id="node8">
 		<attr name="bounds">
-			<rectangle x="247" y="12" width="451" height="85"></rectangle>		</attr>
+			<rectangle x="260" y="11" width="451" height="85"></rectangle>		</attr>
 		<attr name="view">
 			<string>UML</string>
 		</attr>
@@ -1969,7 +2053,7 @@
 
 	</node>
 			
-	<node id="node7">
+	<node id="node6">
 		<attr name="bounds">
 			<rectangle x="37" y="103" width="70" height="43"></rectangle>		</attr>
 
@@ -1983,24 +2067,13 @@
 
 	</node>
 			
-	<node id="node11">
+	<node id="node10">
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 		<attr name="bounds">
 			<rectangle x="175" y="160" width="65" height="15"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node6">
-		<attr name="bounds">
-			<rectangle x="117" y="256" width="178" height="55"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
 
 
 	</node>
@@ -2016,14 +2089,14 @@
 
 	</node>
 			
-	<node id="node10">
+	<node id="node9">
 		<attr name="bounds">
 			<rectangle x="15" y="188" width="110" height="57"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="node8">
+	<node id="node7">
 		<attr name="bounds">
 			<rectangle x="30" y="0" width="81" height="57"></rectangle>		</attr>
 
@@ -2043,7 +2116,7 @@
 			
 	<node id="node4">
 		<attr name="bounds">
-			<rectangle x="120" y="99" width="114" height="15"></rectangle>		</attr>
+			<rectangle x="126" y="98" width="114" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2673,7 +2746,7 @@
 
 	<graph>
 			
-	<node id="16" nid="node0" type="AContainsME">
+	<node id="16" nid="node5" type="AContainsME">
 		<attr name="bounds">
 			<rectangle x="281" y="84" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -2682,7 +2755,7 @@
 
 
 
-	<connected id="node3">
+	<connected id="node2">
 
 
 
@@ -2698,7 +2771,7 @@
 
 
 	</connected>
-	<connected id="node2">
+	<connected id="node3">
 
 
 
@@ -2717,21 +2790,14 @@
 	</connected>
 	</node>
 			
-	<node id="PVInitialMentalState" nid="node3" type="MentalState">
+	<node id="PVInitialMentalState" nid="node2" type="MentalState">
 		<attr name="bounds">
 			<rectangle x="44" y="89" width="152" height="42"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="MentalInstanceSpecification2" nid="node4" type="MentalInstanceSpecification">
-		<attr name="bounds">
-			<rectangle x="400" y="142" width="227" height="55"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="30" nid="node1" type="AContainsME">
+	<node id="30" nid="node4" type="AContainsME">
 		<attr name="bounds">
 			<rectangle x="275" y="131" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -2740,7 +2806,7 @@
 
 
 
-	<connected id="node3">
+	<connected id="node2">
 
 
 
@@ -2756,7 +2822,7 @@
 
 
 	</connected>
-	<connected id="node4">
+	<connected id="node1">
 
 
 
@@ -2775,14 +2841,35 @@
 	</connected>
 	</node>
 			
-	<node id="MentalInstanceSpecification0" nid="node2" type="MentalInstanceSpecification">
+	<node id="MentalInstanceSpecification2" nid="node1" type="MentalInstanceSpecification">
+		<attr name="bounds">
+			<rectangle x="400" y="142" width="227" height="55"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="MentalInstanceSpecification0" nid="node3" type="MentalInstanceSpecification">
 		<attr name="bounds">
 			<rectangle x="411" y="33" width="262" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="AssociatedUnit" nid="node0" type="FrameFact">
+		<attr name="bounds">
+			<rectangle x="117" y="256" width="178" height="55"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
 
 
 	</node><parentship>
 </parentship>
 <entityconstraints>
+<cellconstraint id="node0:INGENIAS">
+<currentcell id="node0" height="32" width="96"/>
+</cellconstraint>
 </entityconstraints>
 
 
@@ -2791,34 +2878,9 @@
 
 	<layout>
 			
-	<node id="node0">
+	<node id="node5">
 		<attr name="bounds">
 			<rectangle x="281" y="84" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node3">
-		<attr name="bounds">
-			<rectangle x="44" y="89" width="152" height="42"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node4">
-		<attr name="bounds">
-			<rectangle x="400" y="142" width="227" height="55"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node1">
-		<attr name="bounds">
-			<rectangle x="275" y="131" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2829,7 +2891,43 @@
 			
 	<node id="node2">
 		<attr name="bounds">
+			<rectangle x="44" y="89" width="152" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node4">
+		<attr name="bounds">
+			<rectangle x="275" y="131" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node1">
+		<attr name="bounds">
+			<rectangle x="400" y="142" width="227" height="55"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node3">
+		<attr name="bounds">
 			<rectangle x="411" y="33" width="262" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node0">
+		<attr name="bounds">
+			<rectangle x="117" y="256" width="178" height="55"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
 
 
 	</node>
@@ -3006,6 +3104,170 @@
 			<string>ingenias</string>
 		</attr>
 
+
+
+	</node>
+	</layout>
+</gxl> </model>
+ <model id="Implementation" type="ingenias.editor.models.ComponentDiagramModelJGraph">
+<object id="Implementation" type="ingenias.editor.entities.ComponentDiagramDataEntity">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+  <path>
+    <package id="Project"/>
+   </path>
+<gxl>
+
+	<graph>
+			
+	<node id="34" nid="node4" type="CDUsesCode">
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+		<attr name="bounds">
+			<rectangle x="459" y="59" width="79" height="17"></rectangle>		</attr>
+
+
+	<connected id="node2"><attr name="extraLabels">
+			<array>
+
+</array>
+</attr>
+
+
+
+
+
+
+	</connected>
+	<connected id="node3">
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="35" nid="node5" type="CDUsesCode">
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+		<attr name="bounds">
+			<rectangle x="472" y="225" width="79" height="15"></rectangle>		</attr>
+
+
+	<connected id="node1"><attr name="extraLabels">
+			<array>
+
+</array>
+</attr>
+
+
+
+
+
+
+	</connected>
+	<connected id="node0">
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="INGENIASCodeComponent0" nid="node3" type="INGENIASCodeComponent">
+		<attr name="bounds">
+			<rectangle x="633" y="37" width="204" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="INGENIASCodeComponent1" nid="node0" type="INGENIASCodeComponent">
+		<attr name="bounds">
+			<rectangle x="647" y="202" width="204" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="Enable PV if high demand and disable if low" nid="node2" type="Task">
+		<attr name="bounds">
+			<rectangle x="91" y="48" width="272" height="43"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="Analyse current status and enable battery if full" nid="node1" type="Task">
+		<attr name="bounds">
+			<rectangle x="77" y="213" width="299" height="43"></rectangle>		</attr>
+
+
+	</node><parentship>
+</parentship>
+<entityconstraints>
+</entityconstraints>
+
+
+	</graph>
+
+
+	<layout>
+			
+	<node id="node4">
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+		<attr name="bounds">
+			<rectangle x="459" y="59" width="79" height="17"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node5">
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+		<attr name="bounds">
+			<rectangle x="472" y="225" width="79" height="15"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node3">
+		<attr name="bounds">
+			<rectangle x="633" y="37" width="204" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node0">
+		<attr name="bounds">
+			<rectangle x="647" y="202" width="204" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node2">
+		<attr name="bounds">
+			<rectangle x="91" y="48" width="272" height="43"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node1">
+		<attr name="bounds">
+			<rectangle x="77" y="213" width="299" height="43"></rectangle>		</attr>
 
 
 	</node>

@@ -18,6 +18,7 @@ import mired.ucm.remote.client.SGClientImp;
 import mired.ucm.remote.orders.RemoteOrder;
 import mired.ucm.remote.server.RemoteSGServer;
 import mired.ucm.simulator.SensorIDS;
+import ingenias.exception.InvalidEntity;
 import ingenias.jade.exception.*;
 import ingenias.jade.mental.*;
 import ingenias.jade.components.*;
@@ -58,6 +59,20 @@ public class SMClientAppImp extends SMClientApp {
 		}.start();
 	}
 
+	public double getBatteryEnergy(String batName) throws RemoteException {
+		try {
+			if (client != null)
+				return client.getServer().getCurrentEnergy(batName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public boolean isReady() {
+		return client != null;
+	}
+
 	public Hashtable<SensorIDS, Float> getSubstationSensors()
 			throws RemoteException {
 		try {
@@ -86,6 +101,24 @@ public class SMClientAppImp extends SMClientApp {
 	public void sendOrder(RemoteOrder order) throws RemoteException {
 		if (client != null)
 			client.getServer().executeOrder(client.getName(), order);
+	}
+
+	public void tryItAgainAfter(final long seconds) {
+		new Thread() {
+			public void run() {
+				try {
+					Thread.currentThread().sleep(seconds * 1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				try {
+					getOwner().getMSM().addMentalEntity(new CheckAgain());
+				} catch (InvalidEntity e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+
 	}
 
 }

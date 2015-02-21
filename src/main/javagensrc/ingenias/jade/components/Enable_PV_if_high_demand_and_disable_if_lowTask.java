@@ -1,4 +1,3 @@
-
 /*
  Copyright (C) 2005 Jorge Gomez Sanz
 
@@ -82,11 +81,21 @@ public class Enable_PV_if_high_demand_and_disable_if_lowTask extends Task {
 		// Available apps:
 		// SMClientApp</li>
 
-		// #start_node: <--- DO NOT REMOVE THIS
-		// REPLACE THIS COMMENT WITH YOUR CODE
+		// #start_node:INGENIASCodeComponent0 <--- DO NOT REMOVE THIS
 		System.out.println(getAgentID() + " executing -> " + getID() + ":"
 				+ getType());
-		// #end_node: <--- DO NOT REMOVE THIS
+		if (!eaSMClient.isReady())
+			eaSMClient.tryItAgainAfter(5);
+		try {
+			// Switches on the PV
+			eaSMClient.sendOrder(new mired.ucm.remote.orders.RemoteSwitchOn(
+					"Solar_11"));
+			System.out.println(eaSMClient.getTransformationCentreSensors());
+		} catch (java.rmi.RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// #end_node:INGENIASCodeComponent0 <--- DO NOT REMOVE THIS
 
 	}
 

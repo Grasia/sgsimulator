@@ -1,4 +1,3 @@
-
 /*
  Copyright (C) 2005 Jorge Gomez Sanz
 
@@ -25,6 +24,8 @@
 package ingenias.jade.components;
 
 import java.util.*;
+
+import mired.ucm.simulator.SensorIDS;
 import ingenias.jade.exception.*;
 import ingenias.jade.comm.*;
 import ingenias.jade.mental.*;
@@ -82,11 +83,38 @@ public class Analyse_current_status_and_enable_battery_if_fullTask extends Task 
 		// Available apps:
 		// SMClientApp</li>
 
-		// #start_node: <--- DO NOT REMOVE THIS
+		// #start_node:INGENIASCodeComponent1 <--- DO NOT REMOVE THIS
 		// REPLACE THIS COMMENT WITH YOUR CODE
 		System.out.println(getAgentID() + " executing -> " + getID() + ":"
 				+ getType());
-		// #end_node: <--- DO NOT REMOVE THIS
+
+		if (!eaSMClient.isReady())
+			eaSMClient.tryItAgainAfter(5);
+
+		try {
+			// Charges the battery
+			if (eaSMClient.getBatteryEnergy("Battery_31") <= 59000) {
+				System.out.println(getAgentID() + " charging");
+				eaSMClient
+						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
+								"Battery_31", 10000));
+				eaSMClient.tryItAgainAfter(20);
+			} else {
+				System.out.println(getAgentID() + " discharging");
+				eaSMClient
+						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
+								"Battery_31", 0));
+			}
+				
+				
+		} catch (java.rmi.RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		
+		
+		// #end_node:INGENIASCodeComponent1 <--- DO NOT REMOVE THIS
 
 	}
 

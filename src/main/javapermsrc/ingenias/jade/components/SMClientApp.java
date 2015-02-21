@@ -47,4 +47,11 @@ public abstract class SMClientApp extends Application {
 	public abstract Hashtable<SensorIDS, Float> getTransformationCentreSensors()
 			throws RemoteException;
 
+	public abstract void tryItAgainAfter(long seconds);
+
+	public abstract boolean isReady();
+
+	public abstract double getBatteryEnergy(String batName)
+			throws RemoteException;
+
 }
