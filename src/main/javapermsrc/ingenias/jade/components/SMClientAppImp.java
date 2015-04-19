@@ -45,8 +45,10 @@ public class SMClientAppImp extends SMClientApp {
 		new Thread() {
 			public void run() {
 				try {
-					while (getOwner() == null)
+					while (getOwner() == null
+							&& !getOwner().isAgentInitialised())
 						Thread.currentThread().sleep(1000);
+
 					String host = getOwner().getMSM()
 							.getMentalEntityByType(AssociatedUnit.class)
 							.firstElement().getdevice();

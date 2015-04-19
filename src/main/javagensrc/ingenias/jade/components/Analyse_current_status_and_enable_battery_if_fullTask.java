@@ -1,3 +1,4 @@
+
 /*
  Copyright (C) 2005 Jorge Gomez Sanz
 
@@ -24,8 +25,6 @@
 package ingenias.jade.components;
 
 import java.util.*;
-
-import mired.ucm.simulator.SensorIDS;
 import ingenias.jade.exception.*;
 import ingenias.jade.comm.*;
 import ingenias.jade.mental.*;
@@ -93,27 +92,30 @@ public class Analyse_current_status_and_enable_battery_if_fullTask extends Task 
 
 		try {
 			// Charges the battery
-			if (eaSMClient.getBatteryEnergy("Battery_31") <= 59000) {
+			if (eaSMClient.getBatteryEnergy("Battery_31") <= 10000) {
 				System.out.println(getAgentID() + " charging");
 				eaSMClient
 						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
 								"Battery_31", 10000));
-				eaSMClient.tryItAgainAfter(20);
-			} else {
-				System.out.println(getAgentID() + " discharging");
-				eaSMClient
-						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
-								"Battery_31", 0));
 			}
-				
-				
 		} catch (java.rmi.RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-		
-		
+		try {
+			// Discharges battery
+			if (eaSMClient.getBatteryEnergy("Battery_31") > 10000) {
+				System.out.println(getAgentID() + " discharging");
+				eaSMClient
+						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
+								"Battery_31", 0));
+			}
+		} catch (java.rmi.RemoteException e) {
+			e.printStackTrace();
+		}
+
+		eaSMClient.tryItAgainAfter(10);
 		// #end_node:INGENIASCodeComponent1 <--- DO NOT REMOVE THIS
 
 	}

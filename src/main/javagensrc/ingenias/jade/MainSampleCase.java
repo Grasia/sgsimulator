@@ -1,3 +1,4 @@
+
 /*
  Copyright (C) 2005 Jorge Gomez Sanz
 
@@ -88,7 +89,7 @@ public class MainSampleCase {
 			{
 				AssociatedUnit ment = new AssociatedUnit();
 
-				ment.setdevice("CT-3");
+				ment.setdevice("transformerCT3");
 
 				agcBattery_Controller_0DeploymentUnitByTypeMSEntity0
 						.putO2AObject(ment, false);
@@ -124,7 +125,7 @@ public class MainSampleCase {
 			{
 				AssociatedUnit ment = new AssociatedUnit();
 
-				ment.setdevice("CT-1");
+				ment.setdevice("transformerCT1");
 
 				agcPV_Controller_0DeploymentUnitByTypeMSEntity1.putO2AObject(
 						ment, false);
