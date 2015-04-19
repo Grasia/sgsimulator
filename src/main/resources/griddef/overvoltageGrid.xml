@@ -22,30 +22,31 @@ xsi:schemaLocation="http://www.example.org/network ../../../../target/resources/
 	
 	<!-- CTs connections -->
 	<connection>
-		<CTa>SUBSTATION</CTa>
-		<CTb>CT-1</CTb>
+		<nodea>SUBSTATION</nodea>
+		<nodeb>CT-1</nodeb>
 		<length>10</length>
 		<phases>ABC</phases>
 		<configuration>line_configuration_MV</configuration>
 	</connection>
 	<connection>
-		<CTa>CT-1</CTa>
-		<CTb>CT-2</CTb>
+		<nodea>CT-1</nodea>
+		<nodeb>CT-2</nodeb>
 		<length>152</length>
 		<phases>ABC</phases>
 		<configuration>line_configuration_MV</configuration>
 	</connection>
 	<connection>
-		<CTa>CT-1</CTa>
-		<CTb>CT-3</CTb>
+		<nodea>CT-1</nodea>
+		<nodeb>CT-3</nodeb>
 		<length>1282</length>
 		<phases>ABC</phases>
 		<configuration>line_configuration_MV</configuration>
 	</connection>
 	
 	
+	
 	<!--- CT -->
-	<ct>
+	<gridnode>
 		<name>CT-1</name>
 		<phases>ABC</phases>
 		<in_nominal_voltage>15000</in_nominal_voltage>
@@ -102,9 +103,9 @@ xsi:schemaLocation="http://www.example.org/network ../../../../target/resources/
 				</components>
 			</transformer>
 		</elements>
-	</ct>
+	</gridnode>
 	
-	<ct>
+	<gridnode>
 		<name>CT-2</name>
 		<phases>ABC</phases>
 		<in_nominal_voltage>15000</in_nominal_voltage>
@@ -158,9 +159,9 @@ xsi:schemaLocation="http://www.example.org/network ../../../../target/resources/
 				</components>
 			</transformer>
 		</elements>
-	</ct>
+	</gridnode>
 	
-	<ct>
+	<gridnode>
 		<name>CT-3</name>
 		<phases>ABC</phases>
 		<in_nominal_voltage>15000</in_nominal_voltage>
@@ -211,6 +212,6 @@ xsi:schemaLocation="http://www.example.org/network ../../../../target/resources/
 				</components>
 			</transformer>
 		</elements>
-	</ct>
+	</gridnode>
 	
 </sgsim>
