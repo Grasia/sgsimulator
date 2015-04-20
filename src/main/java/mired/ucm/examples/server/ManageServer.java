@@ -49,7 +49,7 @@ import junit.framework.TestCase;
 public class ManageServer {
 
 	public static final int hoursOfSimulation = 100; // Hours of simulation
-	public static final int cycleTimeInMinutes = 4; // Setting cycle minutes
+	public static final int cycleTimeInMinutes = 1; // Setting cycle minutes
 	public static final int momentsToShow = 30; // Moments to show in the chart
 
 }

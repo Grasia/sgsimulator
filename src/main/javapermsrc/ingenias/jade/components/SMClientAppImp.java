@@ -36,6 +36,12 @@ public class SMClientAppImp extends SMClientApp {
 		public void serverStopped() throws RemoteException {
 
 		}
+
+		@Override
+		public boolean isFinished() {
+			// TODO Auto-generated method stub
+			return false;
+		}
 	}
 
 	InternalClient client = null;

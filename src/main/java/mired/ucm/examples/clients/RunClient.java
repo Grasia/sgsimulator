@@ -72,8 +72,8 @@ public class RunClient {
 		return registry;
 	};
 
-	public static void teardown() throws RemoteException {
-		UnicastRemoteObject.unexportObject(registry, true);
+	public static void teardown() throws RemoteException {		
+	//	UnicastRemoteObject.unexportObject(registry, true);
 	}
 
 	public static void launch(SGClient client) throws Exception {
@@ -94,8 +94,7 @@ public class RunClient {
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-			}
-		serverThread.join(ManageServer.hoursOfSimulation * 60 * 10);
+			}		
 		teardown();
 	}
 
@@ -107,9 +106,8 @@ public class RunClient {
 				SGServer.getDefaultRemoteServerName());
 		// after creating it, it starts delivering orders
 		client.serverStarted(stub);
-		// stub.addPlug(transformerCT1client);
 		// Wait for simulation to end
-		while (stub.isServerActive()) {
+		while (stub.isServerActive() && !client.isFinished()) {
 			Thread.sleep(2000);
 		}
 		client.serverStopped();

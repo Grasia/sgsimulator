@@ -76,17 +76,34 @@ public class RunServer1 {
 
 		Tariff tarrif = new TariffExample();
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(2014, 4, 15, 6, 0, 0); // Set the start time of
-		// simulation
-		String gridFile = "src/main/resources/griddef/grid.xml";
-		String configFile = "src/main/resources/griddef/configuration.glm";
-		String scenarioFile = "src/main/resources/griddef/scenario.csv";
+		calendar.set(2014, 4, 15, 6, 0, 0); // Set the start time of the
+											// simulation
+		// simulation configuration files
+		String configFile = "src/main/resources/griddef/configuration.glm"; // tech
+																			// params
+																			// of
+																			// grid
+																			// elements
+		String gridFile = "src/main/resources/griddef/grid.xml"; // grid
+																	// definition
+		String scenarioFile = "src/main/resources/griddef/scenario.csv"; // weather
+																			// and
+																			// load
+																			// per
+																			// hour
 		try {
 			server = new SGServer("My simulation", calendar.getTime(),
 					gridFile, configFile, scenarioFile,
 					ManageServer.hoursOfSimulation,
 					ManageServer.cycleTimeInMinutes,
-					ManageServer.momentsToShow, tarrif, true);
+					ManageServer.momentsToShow, tarrif, true); // The last
+																// parameter
+																// indicates
+																// clients will
+																// not be binded
+																// to the
+																// simulation
+																// cycle
 			server.runServer();
 		} catch (Throwable t) {
 			t.printStackTrace();
