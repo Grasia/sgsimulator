@@ -40,7 +40,7 @@ public class SampleRunClientImp {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					server.executeOrder(this.getName(), new RemoteSwitchOff(
+					server.executeOrder(this.getName(), new RemoteSwitchOn(
 							"Solar_11"));
 					finished = true;
 				} catch (SensorContainerNotFound e) {

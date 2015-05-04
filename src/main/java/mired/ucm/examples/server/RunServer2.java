@@ -77,7 +77,7 @@ public class RunServer2 {
 		String scenarioFile = "src/main/resources/griddef/scenario.csv";
 		try {
 			server = new SGServer("My simulation", gridFile, configFile,
-					scenarioFile, ManageServer.cycleTimeInMinutes,
+					scenarioFile, ManageServer.cycleTimeInMilliseconds,
 					ManageServer.momentsToShow, tarrif, true);
 			server.runServer();
 		} catch (Throwable t) {

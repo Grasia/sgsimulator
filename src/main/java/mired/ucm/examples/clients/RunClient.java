@@ -72,8 +72,8 @@ public class RunClient {
 		return registry;
 	};
 
-	public static void teardown() throws RemoteException {		
-	//	UnicastRemoteObject.unexportObject(registry, true);
+	public static void teardown() throws RemoteException {
+		// UnicastRemoteObject.unexportObject(registry, true);
 	}
 
 	public static void launch(SGClient client) throws Exception {
@@ -94,7 +94,7 @@ public class RunClient {
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-			}		
+			}
 		teardown();
 	}
 

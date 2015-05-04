@@ -35,6 +35,8 @@ import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import mired.ucm.price.Tariff;
+import mired.ucm.remote.orders.RemoteSwitchOff;
+import mired.ucm.remote.orders.RemoteSwitchOn;
 import mired.ucm.remote.server.SGServer;
 import mired.ucm.simulator.GridlabException;
 import junit.framework.TestCase;
@@ -76,7 +78,7 @@ public class RunServerOvervoltage {
 
 		Tariff tarrif = new TariffExample();
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(2014, 4, 15, 6, 0, 0); // Set the start time of
+		calendar.set(2014, 4, 15, 10, 30, 0); // Set the start time of
 		// simulation
 		String gridFile = "src/main/resources/griddef/overvoltageGrid.xml";
 		String configFile = "src/main/resources/griddef/configuration.glm";
@@ -85,9 +87,11 @@ public class RunServerOvervoltage {
 			server = new SGServer("My simulation", calendar.getTime(),
 					gridFile, configFile, scenarioFile,
 					ManageServer.hoursOfSimulation,
-					ManageServer.cycleTimeInMinutes,
-					ManageServer.momentsToShow, tarrif, true);
+					ManageServer.cycleTimeInMilliseconds * 10,
+					ManageServer.momentsToShow, tarrif, true,
+					ManageServer.realTimeCycleLengthMillis);
 			server.runServer();
+
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
@@ -99,6 +103,14 @@ public class RunServerOvervoltage {
 		SGServer server;
 		try {
 			server = runServerOvervoltage();
+			server.executeOrder("transformerCT1",
+					new RemoteSwitchOn("Solar_11"));
+			Thread.currentThread().sleep(3000);
+			server.executeOrder("transformerCT1", new RemoteSwitchOff(
+					"Solar_11"));
+			Thread.currentThread().sleep(3000);
+			server.executeOrder("transformerCT1", new RemoteSwitchOff(
+					"Solar_11"));
 			server.waitForSimulationToFinish();
 
 		} catch (GridlabException e) {

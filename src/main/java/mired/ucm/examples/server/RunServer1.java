@@ -18,6 +18,9 @@
  */
 package mired.ucm.examples.server;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.AlreadyBoundException;
 import java.rmi.NotBoundException;
@@ -26,6 +29,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.Vector;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -34,9 +40,19 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+import mired.ucm.monitor.Event;
 import mired.ucm.price.Tariff;
+import mired.ucm.remote.client.SGClientImp;
 import mired.ucm.remote.server.SGServer;
 import mired.ucm.simulator.GridlabException;
+import mired.ucm.simulator.NetworkElementsStatus;
+import mired.ucm.simulator.NetworkListener;
+import mired.ucm.simulator.NetworkStatus;
+import mired.ucm.simulator.NetworkStatus.UnknownSensor;
+import mired.ucm.simulator.SensorIDS;
+import mired.ucm.simulator.SimulatorNotInitializedException;
+import mired.ucm.simulator.clients.Client;
+import mired.ucm.simulator.orders.Order;
 import junit.framework.TestCase;
 
 /**
@@ -69,46 +85,139 @@ public class RunServer1 {
 	}
 
 	public static SGServer runServer() throws IOException,
-			java.rmi.AlreadyBoundException, GridlabException,
-			ParserConfigurationException, SAXException, InterruptedException,
-			RemoteException, NotBoundException {
-		SGServer server = null;
+	java.rmi.AlreadyBoundException, GridlabException,
+	ParserConfigurationException, SAXException, InterruptedException,
+	RemoteException, NotBoundException {
 
 		Tariff tarrif = new TariffExample();
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(2014, 4, 15, 6, 0, 0); // Set the start time of the
-											// simulation
+		// simulation
 		// simulation configuration files
 		String configFile = "src/main/resources/griddef/configuration.glm"; // tech
-																			// params
-																			// of
-																			// grid
-																			// elements
+		// params
+		// of
+		// grid
+		// elements
 		String gridFile = "src/main/resources/griddef/grid.xml"; // grid
-																	// definition
+		// definition
 		String scenarioFile = "src/main/resources/griddef/scenario.csv"; // weather
-																			// and
-																			// load
-																			// per
-																			// hour
+		// and
+		// load
+		// per
+		// hour
+		final SGServer server = new SGServer("My simulation",
+				calendar.getTime(), gridFile, configFile, scenarioFile,
+				ManageServer.hoursOfSimulation,
+				ManageServer.cycleTimeInMilliseconds,
+				ManageServer.momentsToShow, tarrif, true,
+				ManageServer.realTimeCycleLengthMillis); // The last
 		try {
-			server = new SGServer("My simulation", calendar.getTime(),
-					gridFile, configFile, scenarioFile,
-					ManageServer.hoursOfSimulation,
-					ManageServer.cycleTimeInMinutes,
-					ManageServer.momentsToShow, tarrif, true); // The last
-																// parameter
-																// indicates
-																// clients will
-																// not be binded
-																// to the
-																// simulation
-																// cycle
+
+			createFileStatsClient(server);
+			// parameter
+			// indicates
+			// clients will
+			// not be binded
+			// to the
+			// simulation
+			// cycle
 			server.runServer();
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
 		return server;
+	}
+
+	private static void createFileStatsClient(final SGServer server)
+			throws IOException, FileNotFoundException,
+			SimulatorNotInitializedException {
+		if (!(new File("target").exists()))
+			new File("target").mkdir();
+		File output = File.createTempFile("record", ".csv", new File("target"));
+		final FileOutputStream fos = new FileOutputStream(output);
+		server.getSimulatorDisplayer().getGridLabDiscreteEventSimulator()
+		.registerListener(new NetworkListener() {
+
+			@Override
+			public void processStatus(
+					Hashtable<SensorIDS, Float> sensorValues,
+					Date timestamp) {
+			}
+
+			@Override
+			public void processEvent(Event event) {
+				try {
+					fos.write((";;" + event.getTimestamp() + ";"
+							+ event.getDeviceName() + ";").getBytes());
+					fos.flush();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			Vector<String> sensorOrder = new Vector<String>();
+			Vector<Order> alreadyVisualizedOrders=new Vector<Order>();
+			Date lastTimeStamp=null;
+			@Override
+			public void processCycleStatus(NetworkStatus ns,
+					NetworkElementsStatus nes, Date timestamp) {
+
+				try {
+					if (sensorOrder.isEmpty()) {
+						// first iteration. Headers are written
+						for (SensorIDS sensor : ns
+								.getSubstationSensors().keySet()) {
+							sensorOrder.add(sensor.toString());
+						}
+						fos.write(("timestamp;overvoltage;").getBytes());
+						for (String sid : sensorOrder) {
+							fos.write(("" + sid + ";").getBytes());
+						};
+
+						fos.write("executedOrders\n".getBytes());
+
+					}
+					// sensor data is written in the same order
+					// everytime
+					fos.write((timestamp + ";"
+							+ ns.thereIsOvervoltage() + ";").getBytes());
+					double[] values = new double[sensorOrder.size()];
+					for (SensorIDS sensor : ns.getSubstationSensors()
+							.keySet()) {
+						values[sensorOrder.indexOf(sensor.toString())] = ns
+								.getSubstationSensor(sensor);
+					}
+					for (int k = 0; k < values.length; k++) {
+						fos.write(("" + values[k] + ";").getBytes());
+					}
+					Vector<Order> orders = new Vector<Order>();
+					if (lastTimeStamp!=null){
+						orders=server.getAppliedOrdersSince(lastTimeStamp);
+						orders.removeAll(alreadyVisualizedOrders);
+						alreadyVisualizedOrders.addAll(orders);
+						
+					}
+					lastTimeStamp=timestamp;
+					fos.write(
+							orders.toString().getBytes());
+					fos.write("\n".getBytes());
+
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnknownSensor e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void overvoltageEvent(Date timestamp) {
+
+			}
+		});
 	}
 
 	public static void main(String args[]) throws Exception {
