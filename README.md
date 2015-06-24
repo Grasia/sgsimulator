@@ -21,6 +21,6 @@ Finally, you can choose which deployment to execute
 
 #Development
 
-To check and edit the agent specification, run "ant edit". Go to (http://ingenias.sf.net)[http://ingenias.sf.net] for more instructions about INGENIAS and how to compile/deploy this kind of systems.
+To check and edit the agent specification, run "ant edit". Go to http://ingenias.sf.net for more instructions about INGENIAS and how to compile/deploy this kind of systems.
 
-The smartgrid simulator can be checked and downloaded at (http://sgsimulator.sf.net)[http://sgsimulator.sf.net].
+The smartgrid simulator can be checked and downloaded at http://sgsimulator.sf.net.
