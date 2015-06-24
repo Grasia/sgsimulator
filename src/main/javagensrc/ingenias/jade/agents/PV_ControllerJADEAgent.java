@@ -96,9 +96,10 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 				if (expectedInput.size() == 0) {
 					nonExistingInputs.add("NONSENSEENTITY");
 				} else {
-					addExpectedInputs(tobject, "NONSENSEENTITY", "1",
+					JADEAgent.addExpectedInputs(tobject, "NONSENSEENTITY", "1",
 							expectedInput);
-					addConsumedInput(to, "NONSENSEENTITY", expectedInput);
+					JADEAgent.addConsumedInput(to, "NONSENSEENTITY",
+							expectedInput);
 				}
 				allEntitiesExist = allEntitiesExist
 						|| expectedInput.size() != 0;
@@ -131,11 +132,22 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 			boolean allEntitiesExist = true;
 			TaskOutput to = null;
 
-			expectedInput = this.getMSM().getMentalEntityByType("CheckAgain");
+			expectedInput = this.getMSM().getMentalEntityByType(
+					"AssociatedUnit");
 			if (expectedInput.size() == 0 && !("1".equals("0..n"))) {
-				nonExistingInputs.add("CheckAgain");
+				nonExistingInputs.add("AssociatedUnit");
 			} else {
-				addExpectedInputs(tobject, "CheckAgain", "1", expectedInput);
+				JADEAgent.addExpectedInputs(tobject, "AssociatedUnit", "1",
+						expectedInput);
+			}
+			allEntitiesExist = allEntitiesExist && expectedInput.size() != 0;
+
+			expectedInput = this.getMSM().getMentalEntityByType("_TimeTick1");
+			if (expectedInput.size() == 0 && !("1".equals("0..n"))) {
+				nonExistingInputs.add("_TimeTick1");
+			} else {
+				JADEAgent.addExpectedInputs(tobject, "_TimeTick1", "1",
+						expectedInput);
 			}
 			allEntitiesExist = allEntitiesExist && expectedInput.size() != 0;
 
@@ -161,78 +173,7 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 				for (TaskOutput singleTO : tobject.getOutputs()) {
 
 					expectedInput = this.getMSM().getMentalEntityByType(
-							"CheckAgain");
-					if (expectedInput.size() == 0 && !("1".equals("0..n"))) {
-					} else {
-						// to remove the input from whatever alternative
-						addConsumedInput(singleTO, "1", expectedInput);
-					}
-					allEntitiesExist = allEntitiesExist
-							&& expectedInput.size() != 0;
-
-				}
-			}
-			initialised = allEntitiesExist;
-
-			if (!allEntitiesExist) {
-				String[] nonexisting = new String[nonExistingInputs.size()];
-				for (int j = 0; j < nonExistingInputs.size(); j++) {
-					nonexisting[j] = nonExistingInputs.elementAt(j).toString();
-				}
-				EventManager.getInstance()
-						.conversationalInitializationOfTaskFailed(
-								getLocalName(), "PV_Controller", tobject,
-								nonexisting);
-			} else {
-
-			}
-			return initialised;
-		}
-
-		nonExistingInputs.clear();
-		repeatedOutputs.clear();
-		if (tobject.getType().equals(
-				"Enable_PV_if_high_demand_and_disable_if_low")) {
-			Vector<MentalEntity> expectedInput = null;
-			RuntimeFact expectedOutput = null;
-			RuntimeEvent expectedOutputEvent = null;
-			RuntimeConversation expectedInt = null;
-			ingenias.jade.components.Resource expectedResource = null;
-			ingenias.jade.components.Application expectedApp = null;
-			boolean allEntitiesExist = true;
-			TaskOutput to = null;
-
-			expectedInput = this.getMSM().getMentalEntityByType("CheckAgain");
-			if (expectedInput.size() == 0 && !("1".equals("0..n"))) {
-				nonExistingInputs.add("CheckAgain");
-			} else {
-				addExpectedInputs(tobject, "CheckAgain", "1", expectedInput);
-			}
-			allEntitiesExist = allEntitiesExist && expectedInput.size() != 0;
-
-			expectedApp = (ingenias.jade.components.Application) getAM()
-					.getApplication("SMClient");
-			tobject.addApplication("SMClient", expectedApp);
-
-			// Default application for all tasks executed within a conversation
-			expectedApp = (ingenias.jade.components.Application) getAM()
-					.getApplication("YellowPages");
-			tobject.addApplication("YellowPages", expectedApp);
-
-			/**/
-
-			if (allEntitiesExist) {
-				// some tasks do not have output, so a fake one has to be
-				// created
-				// to allocate input consumption
-				if (to == null) {
-					to = new TaskOutput("default");
-					tobject.addOutput(to);
-				}
-				for (TaskOutput singleTO : tobject.getOutputs()) {
-
-					expectedInput = this.getMSM().getMentalEntityByType(
-							"CheckAgain");
+							"_TimeTick1");
 					if (expectedInput.size() == 0 && !("1".equals("0..n"))) {
 					} else {
 						// to remove the input from whatever alternative
@@ -289,9 +230,10 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 				if (expectedInput.size() == 0) {
 					nonExistingInputs.add("NONSENSEENTITY");
 				} else {
-					addExpectedInputs(tobject, "NONSENSEENTITY", "1",
+					JADEAgent.addExpectedInputs(tobject, "NONSENSEENTITY", "1",
 							expectedInput);
-					addConsumedInput(to, "NONSENSEENTITY", expectedInput);
+					JADEAgent.addConsumedInput(to, "NONSENSEENTITY",
+							expectedInput);
 				}
 				allEntitiesExist = allEntitiesExist
 						|| expectedInput.size() != 0;
@@ -346,25 +288,6 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 
 		}
 
-		if (goalname.equals("ReducePowerGridConsumption")) {
-
-			{
-				boolean canbescheduled = false;
-				Task tobject = null;
-				// If a conversational initialization fails, a conventional one
-				// is tried
-				tobject = new Enable_PV_if_high_demand_and_disable_if_lowTask(
-						ingenias.jade.MentalStateManager
-								.generateMentalEntityID());
-				canbescheduled = initialiseNonConversationalTask(tobject);
-				if (canbescheduled) {
-					// MainInteractionManager.log("Scheduled task "+tobject.getType()+" to achieve goal ReducePowerGridConsumption",getLocalName()+"-"+tobject.getType());
-					tasks.add(tobject);
-				}
-			}
-
-		}
-
 		Task tobject = new DeleteNonUsedEntitiesTask(
 				"DeleteNonUsedEntitiesTask", "DeleteNonUsedEntitiesTask");
 		boolean canbescheduled = initialiseNonConversationalTask(tobject);
@@ -380,8 +303,6 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 	public void setup() {
 		super.setup();
 		Vector<String> ttypes = new Vector<String>();
-
-		ttypes.add("Enable_PV_if_high_demand_and_disable_if_low");
 
 		ttypes.add("Enable_PV_if_high_demand_and_disable_if_low");
 
@@ -410,16 +331,6 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 			e1.printStackTrace();
 		}
 
-		sg = new ingenias.editor.entities.StateGoal(
-				"ReducePowerGridConsumption");
-		sg.setState("pending");
-		try {
-			this.getMSM().addMentalEntity(sg);
-		} catch (InvalidEntity e1) {
-
-			e1.printStackTrace();
-		}
-
 		// Initializing the applications panel in the manager
 
 		Vector events = null;
@@ -428,6 +339,30 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 		// Initial applications assigned to the agent
 		Vector actions = null;
 		Vector evetns = null;
+
+		// Initial applications assigned to the agent
+
+		app = _TimeTickerInit.getInstance(this);
+		// app.registerOwner(this);
+
+		this.getAM().addApplication("_TimeTicker", app);
+		events = new Vector();
+		actions = new Vector();
+
+		event = new _TimeTick2();
+		/* 
+	 */
+		events.add(event);
+		actions.add(generateActionListener(_TimeTick2.class));
+
+		event = new _TimeTick1();
+		/* 
+	 */
+		events.add(event);
+		actions.add(generateActionListener(_TimeTick1.class));
+
+		if (getGraphics() != null)
+			getGraphics().addApplication("_TimeTicker", events, actions);
 
 		// Initial applications assigned to the agent
 
@@ -469,6 +404,14 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 		DFAgentDescription dfd = null;
 		dfd = new DFAgentDescription();
 		ServiceDescription sd = null;
+
+		dfd.setName(getAID());
+		sd = new ServiceDescription();
+		sd.setName(getLocalName() + "-sub-df");
+		sd.setType("_TimeTickReceiver");
+		sd.setOwnership("JADE");
+		dfd.addServices(sd);
+		playedRoles.add(dfd);
 
 		dfd.setName(getAID());
 		sd = new ServiceDescription();

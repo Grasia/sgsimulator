@@ -37,7 +37,7 @@ import ingenias.jade.mental.*;
 
 import ingenias.jade.graphics.MainInteractionManager;
 
-public class MainSampleCaseProdStandAlone {
+public class MainFullCaseProdStandAlone {
 
 	public static void main(String args[]) throws Exception {
 		IAFProperties.setGraphicsOn(false);
@@ -119,6 +119,118 @@ public class MainSampleCaseProdStandAlone {
 
 		{
 			// Create a new agent
+			final jade.wrapper.AgentController agcPV_Controller_0DeploymentUnitByTypeMSEntity4 = ac
+					.createNewAgent(
+							"PV_Controller_0DeploymentUnitByTypeMSEntity4",
+							"ingenias.jade.agents.PV_ControllerJADEAgent",
+							new Object[0]);
+
+			{
+				AssociatedUnit ment = new AssociatedUnit();
+
+				ment.setdevice("Solar_221");
+
+				agcPV_Controller_0DeploymentUnitByTypeMSEntity4.putO2AObject(
+						ment, false);
+			}
+
+			new Thread() {
+				public void run() {
+					try {
+						System.out
+								.println("Starting up PV_Controller_0DeploymentUnitByTypeMSEntity4...");
+						agcPV_Controller_0DeploymentUnitByTypeMSEntity4.start();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+
+			// Create a new agent
+			final jade.wrapper.AgentController agcPV_Controller_0DeploymentUnitByTypeMSEntity3 = ac
+					.createNewAgent(
+							"PV_Controller_0DeploymentUnitByTypeMSEntity3",
+							"ingenias.jade.agents.PV_ControllerJADEAgent",
+							new Object[0]);
+
+			{
+				AssociatedUnit ment = new AssociatedUnit();
+
+				ment.setdevice("Solar_311");
+
+				agcPV_Controller_0DeploymentUnitByTypeMSEntity3.putO2AObject(
+						ment, false);
+			}
+
+			new Thread() {
+				public void run() {
+					try {
+						System.out
+								.println("Starting up PV_Controller_0DeploymentUnitByTypeMSEntity3...");
+						agcPV_Controller_0DeploymentUnitByTypeMSEntity3.start();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+
+			// Create a new agent
+			final jade.wrapper.AgentController agcPV_Controller_0DeploymentUnitByTypeMSEntity6 = ac
+					.createNewAgent(
+							"PV_Controller_0DeploymentUnitByTypeMSEntity6",
+							"ingenias.jade.agents.PV_ControllerJADEAgent",
+							new Object[0]);
+
+			{
+				AssociatedUnit ment = new AssociatedUnit();
+
+				ment.setdevice("Solar_21");
+
+				agcPV_Controller_0DeploymentUnitByTypeMSEntity6.putO2AObject(
+						ment, false);
+			}
+
+			new Thread() {
+				public void run() {
+					try {
+						System.out
+								.println("Starting up PV_Controller_0DeploymentUnitByTypeMSEntity6...");
+						agcPV_Controller_0DeploymentUnitByTypeMSEntity6.start();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+
+			// Create a new agent
+			final jade.wrapper.AgentController agcPV_Controller_0DeploymentUnitByTypeMSEntity5 = ac
+					.createNewAgent(
+							"PV_Controller_0DeploymentUnitByTypeMSEntity5",
+							"ingenias.jade.agents.PV_ControllerJADEAgent",
+							new Object[0]);
+
+			{
+				AssociatedUnit ment = new AssociatedUnit();
+
+				ment.setdevice("Solar_222");
+
+				agcPV_Controller_0DeploymentUnitByTypeMSEntity5.putO2AObject(
+						ment, false);
+			}
+
+			new Thread() {
+				public void run() {
+					try {
+						System.out
+								.println("Starting up PV_Controller_0DeploymentUnitByTypeMSEntity5...");
+						agcPV_Controller_0DeploymentUnitByTypeMSEntity5.start();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+
+			// Create a new agent
 			final jade.wrapper.AgentController agcBattery_Controller_0DeploymentUnitByTypeMSEntity0 = ac
 					.createNewAgent(
 							"Battery_Controller_0DeploymentUnitByTypeMSEntity0",
@@ -175,7 +287,35 @@ public class MainSampleCaseProdStandAlone {
 				}
 			}.start();
 
+			// Create a new agent
+			final jade.wrapper.AgentController agcPV_Controller_0DeploymentUnitByTypeMSEntity2 = ac
+					.createNewAgent(
+							"PV_Controller_0DeploymentUnitByTypeMSEntity2",
+							"ingenias.jade.agents.PV_ControllerJADEAgent",
+							new Object[0]);
+
+			{
+				AssociatedUnit ment = new AssociatedUnit();
+
+				ment.setdevice("Solar_312");
+
+				agcPV_Controller_0DeploymentUnitByTypeMSEntity2.putO2AObject(
+						ment, false);
+			}
+
+			new Thread() {
+				public void run() {
+					try {
+						System.out
+								.println("Starting up PV_Controller_0DeploymentUnitByTypeMSEntity2...");
+						agcPV_Controller_0DeploymentUnitByTypeMSEntity2.start();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+
 		}
-		MainInteractionManager.getInstance().setTitle("node SampleCase");
+		MainInteractionManager.getInstance().setTitle("node FullCase");
 	}
 }

@@ -97,9 +97,10 @@ public class Battery_ControllerJADEAgent extends JADEAgent {
 				if (expectedInput.size() == 0) {
 					nonExistingInputs.add("NONSENSEENTITY");
 				} else {
-					addExpectedInputs(tobject, "NONSENSEENTITY", "1",
+					JADEAgent.addExpectedInputs(tobject, "NONSENSEENTITY", "1",
 							expectedInput);
-					addConsumedInput(to, "NONSENSEENTITY", expectedInput);
+					JADEAgent.addConsumedInput(to, "NONSENSEENTITY",
+							expectedInput);
 				}
 				allEntitiesExist = allEntitiesExist
 						|| expectedInput.size() != 0;
@@ -132,11 +133,12 @@ public class Battery_ControllerJADEAgent extends JADEAgent {
 			boolean allEntitiesExist = true;
 			TaskOutput to = null;
 
-			expectedInput = this.getMSM().getMentalEntityByType("CheckAgain");
+			expectedInput = this.getMSM().getMentalEntityByType("_TimeTick2");
 			if (expectedInput.size() == 0 && !("1".equals("0..n"))) {
-				nonExistingInputs.add("CheckAgain");
+				nonExistingInputs.add("_TimeTick2");
 			} else {
-				addExpectedInputs(tobject, "CheckAgain", "1", expectedInput);
+				JADEAgent.addExpectedInputs(tobject, "_TimeTick2", "1",
+						expectedInput);
 			}
 			allEntitiesExist = allEntitiesExist && expectedInput.size() != 0;
 
@@ -162,7 +164,7 @@ public class Battery_ControllerJADEAgent extends JADEAgent {
 				for (TaskOutput singleTO : tobject.getOutputs()) {
 
 					expectedInput = this.getMSM().getMentalEntityByType(
-							"CheckAgain");
+							"_TimeTick2");
 					if (expectedInput.size() == 0 && !("1".equals("0..n"))) {
 					} else {
 						// to remove the input from whatever alternative
@@ -219,9 +221,10 @@ public class Battery_ControllerJADEAgent extends JADEAgent {
 				if (expectedInput.size() == 0) {
 					nonExistingInputs.add("NONSENSEENTITY");
 				} else {
-					addExpectedInputs(tobject, "NONSENSEENTITY", "1",
+					JADEAgent.addExpectedInputs(tobject, "NONSENSEENTITY", "1",
 							expectedInput);
-					addConsumedInput(to, "NONSENSEENTITY", expectedInput);
+					JADEAgent.addConsumedInput(to, "NONSENSEENTITY",
+							expectedInput);
 				}
 				allEntitiesExist = allEntitiesExist
 						|| expectedInput.size() != 0;
@@ -319,16 +322,6 @@ public class Battery_ControllerJADEAgent extends JADEAgent {
 			e1.printStackTrace();
 		}
 
-		sg = new ingenias.editor.entities.StateGoal(
-				"ReducePowerGridConsumption");
-		sg.setState("pending");
-		try {
-			this.getMSM().addMentalEntity(sg);
-		} catch (InvalidEntity e1) {
-
-			e1.printStackTrace();
-		}
-
 		// Initializing the applications panel in the manager
 
 		Vector events = null;
@@ -337,6 +330,30 @@ public class Battery_ControllerJADEAgent extends JADEAgent {
 		// Initial applications assigned to the agent
 		Vector actions = null;
 		Vector evetns = null;
+
+		// Initial applications assigned to the agent
+
+		app = _TimeTickerInit.getInstance(this);
+		// app.registerOwner(this);
+
+		this.getAM().addApplication("_TimeTicker", app);
+		events = new Vector();
+		actions = new Vector();
+
+		event = new _TimeTick2();
+		/* 
+	 */
+		events.add(event);
+		actions.add(generateActionListener(_TimeTick2.class));
+
+		event = new _TimeTick1();
+		/* 
+	 */
+		events.add(event);
+		actions.add(generateActionListener(_TimeTick1.class));
+
+		if (getGraphics() != null)
+			getGraphics().addApplication("_TimeTicker", events, actions);
 
 		// Initial applications assigned to the agent
 
@@ -378,6 +395,14 @@ public class Battery_ControllerJADEAgent extends JADEAgent {
 		DFAgentDescription dfd = null;
 		dfd = new DFAgentDescription();
 		ServiceDescription sd = null;
+
+		dfd.setName(getAID());
+		sd = new ServiceDescription();
+		sd.setName(getLocalName() + "-sub-df");
+		sd.setType("_TimeTickReceiver");
+		sd.setOwnership("JADE");
+		dfd.addServices(sd);
+		playedRoles.add(dfd);
 
 		dfd.setName(getAID());
 		sd = new ServiceDescription();

@@ -29,19 +29,18 @@ import ingenias.jade.components.*;
 import ingenias.editor.entities.*;
 import ingenias.editor.entities.ViewPreferences.ViewType;
 
-public class AssociatedUnit extends ingenias.editor.entities.RuntimeFact {
+public class _TimeTick1 extends ingenias.editor.entities.RuntimeEvent {
 
-	java.lang.String device;
-
-	public AssociatedUnit(String id) {
+	public _TimeTick1(String id) {
 		super(id);
 		this.getPrefs(null).setView(ViewType.UML);
-		this.type = "AssociatedUnit";
+		this.type = "_TimeTick1";
 	}
 
-	public AssociatedUnit() {
+	public _TimeTick1() {
 		super(ingenias.jade.MentalStateManager.generateMentalEntityID());
 		this.getPrefs(null).setView(ViewType.UML);
+		this.type = "_TimeTick1";
 	}
 
 	public String toString() {
@@ -49,19 +48,11 @@ public class AssociatedUnit extends ingenias.editor.entities.RuntimeFact {
 	}
 
 	public String getType() {
-		return "AssociatedUnit";
+		return "_TimeTick1";
 	}
 
 	public String getParentType() {
-		return "RuntimeFact";
-	}
-
-	public void setdevice(java.lang.String value) {
-		device = value;
-	};
-
-	public java.lang.String getdevice() {
-		return device;
+		return "RuntimeEvent";
 	}
 
 }

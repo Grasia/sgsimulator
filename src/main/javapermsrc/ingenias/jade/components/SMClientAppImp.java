@@ -59,7 +59,8 @@ public class SMClientAppImp extends SMClientApp {
 							.getMentalEntityByType(AssociatedUnit.class)
 							.firstElement().getdevice();
 					client = new InternalClient(host);
-					mired.ucm.examples.clients.RunClient.launch(client);
+					mired.ucm.examples.clients.RunClient
+							.launchAndWaitForServerShutdown(client);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -105,10 +106,16 @@ public class SMClientAppImp extends SMClientApp {
 		return new Hashtable<SensorIDS, Float>();
 	}
 
+	RemoteOrder lastOrder = null;
+
 	@Override
 	public void sendOrder(RemoteOrder order) throws RemoteException {
-		if (client != null)
+		if (client != null
+				&& (lastOrder == null || (lastOrder != null && !lastOrder
+						.equals(order)))) {
 			client.getServer().executeOrder(client.getName(), order);
+			lastOrder = order;
+		}
 	}
 
 	public void tryItAgainAfter(final long seconds) {

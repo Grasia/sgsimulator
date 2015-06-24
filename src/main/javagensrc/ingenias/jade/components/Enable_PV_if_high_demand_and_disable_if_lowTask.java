@@ -37,7 +37,8 @@ import ingenias.editor.entities.*;
  * </p>
  * Inputs:
  * <ul>
- * <li>CheckAgain</li>
+ * <li>_TimeTick1</li>
+ * <li>AssociatedUnit</li>
  * 
  * 
  * 
@@ -62,8 +63,11 @@ public class Enable_PV_if_high_demand_and_disable_if_lowTask extends Task {
 	public void execute() throws TaskException {
 		YellowPages yp = null; // only available for initiators of interactions
 
-		CheckAgain eiCheckAgain = (CheckAgain) this
-				.getFirstInputOfType("CheckAgain");
+		_TimeTick1 ei_TimeTick1 = (_TimeTick1) this
+				.getFirstInputOfType("_TimeTick1");
+
+		AssociatedUnit eiAssociatedUnit = (AssociatedUnit) this
+				.getFirstInputOfType("AssociatedUnit");
 
 		SMClientApp eaSMClient = (SMClientApp) this.getApplication("SMClient");
 
@@ -81,6 +85,10 @@ public class Enable_PV_if_high_demand_and_disable_if_lowTask extends Task {
 		// Available apps:
 		// SMClientApp</li>
 
+		// Summary of alternatives available to this task
+		// --------------------------------------------------------
+
+		// Code Area
 		// #start_node:INGENIASCodeComponent0 <--- DO NOT REMOVE THIS
 		System.out.println(getAgentID() + " executing -> " + getID() + ":"
 				+ getType());
@@ -89,7 +97,7 @@ public class Enable_PV_if_high_demand_and_disable_if_lowTask extends Task {
 		try {
 			// Switches on the PV
 			eaSMClient.sendOrder(new mired.ucm.remote.orders.RemoteSwitchOn(
-					"Solar_11"));
+					eiAssociatedUnit.getdevice()));
 			System.out.println(eaSMClient.getTransformationCentreSensors());
 		} catch (java.rmi.RemoteException e) {
 			// TODO Auto-generated catch block

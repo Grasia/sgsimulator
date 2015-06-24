@@ -1,4 +1,3 @@
-
 /*
  Copyright (C) 2005 Jorge Gomez Sanz
 
@@ -22,46 +21,18 @@
 
  */
 
-package ingenias.jade.mental;
+package ingenias.jade.components;
 
 import java.util.*;
+import ingenias.jade.exception.*;
+import ingenias.jade.mental.*;
 import ingenias.jade.components.*;
-import ingenias.editor.entities.*;
-import ingenias.editor.entities.ViewPreferences.ViewType;
+import ingenias.jade.smachines.*;
 
-public class AssociatedUnit extends ingenias.editor.entities.RuntimeFact {
+public abstract class _TimeTickerApp extends MultipleOwnersApplication {
 
-	java.lang.String device;
-
-	public AssociatedUnit(String id) {
-		super(id);
-		this.getPrefs(null).setView(ViewType.UML);
-		this.type = "AssociatedUnit";
-	}
-
-	public AssociatedUnit() {
-		super(ingenias.jade.MentalStateManager.generateMentalEntityID());
-		this.getPrefs(null).setView(ViewType.UML);
-	}
-
-	public String toString() {
-		return this.getId() + ":" + this.getType();
-	}
-
-	public String getType() {
-		return "AssociatedUnit";
-	}
-
-	public String getParentType() {
-		return "RuntimeFact";
-	}
-
-	public void setdevice(java.lang.String value) {
-		device = value;
-	};
-
-	public java.lang.String getdevice() {
-		return device;
+	public _TimeTickerApp() {
+		super();
 	}
 
 }

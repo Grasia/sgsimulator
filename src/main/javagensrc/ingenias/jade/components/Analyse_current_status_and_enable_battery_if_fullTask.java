@@ -37,7 +37,7 @@ import ingenias.editor.entities.*;
  * </p>
  * Inputs:
  * <ul>
- * <li>CheckAgain</li>
+ * <li>_TimeTick2</li>
  * 
  * 
  * 
@@ -62,8 +62,8 @@ public class Analyse_current_status_and_enable_battery_if_fullTask extends Task 
 	public void execute() throws TaskException {
 		YellowPages yp = null; // only available for initiators of interactions
 
-		CheckAgain eiCheckAgain = (CheckAgain) this
-				.getFirstInputOfType("CheckAgain");
+		_TimeTick2 ei_TimeTick2 = (_TimeTick2) this
+				.getFirstInputOfType("_TimeTick2");
 
 		SMClientApp eaSMClient = (SMClientApp) this.getApplication("SMClient");
 
@@ -81,6 +81,10 @@ public class Analyse_current_status_and_enable_battery_if_fullTask extends Task 
 		// Available apps:
 		// SMClientApp</li>
 
+		// Summary of alternatives available to this task
+		// --------------------------------------------------------
+
+		// Code Area
 		// #start_node:INGENIASCodeComponent1 <--- DO NOT REMOVE THIS
 		// REPLACE THIS COMMENT WITH YOUR CODE
 		System.out.println(getAgentID() + " executing -> " + getID() + ":"
@@ -108,7 +112,7 @@ public class Analyse_current_status_and_enable_battery_if_fullTask extends Task 
 				System.out.println(getAgentID() + " discharging");
 				eaSMClient
 						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
-								"Battery_31", 0));
+								"Battery_31", -10000));
 			}
 		} catch (java.rmi.RemoteException e) {
 			e.printStackTrace();
