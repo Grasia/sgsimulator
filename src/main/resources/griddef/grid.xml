@@ -114,17 +114,18 @@ xsi:schemaLocation="http://www.example.org/network ../../../../target/resources/
 				<configuration>config_transformer_ct2</configuration>
 				<out_nominal_voltage>400</out_nominal_voltage>
 				<components>
-					<load>
-						<type>WIND_GENERATOR</type>
-						<control>2</control>
-						<name>Wind_21</name>
+				<load>
+						<type>SOLAR_GENERATOR</type>
+						<control>1</control>
+						<name>Solar_21</name>
 						<phases>ABCN</phases>
 						<nominal_voltage>400</nominal_voltage>
-						<max_power>3000</max_power>
-						<wire_length>6</wire_length>
+						<max_power>10000</max_power>
+						<wire_length>49.1</wire_length>
 						<configuration>line_configuration_LV</configuration>
 						<connected_to>transformerCT2_1</connected_to>
-					</load>	
+					</load>
+					
 				</components>
 			</transformer>
 			
@@ -155,6 +156,28 @@ xsi:schemaLocation="http://www.example.org/network ../../../../target/resources/
 						<configuration>line_configuration_LV</configuration>
 						<connected_to>transformerCT2_2</connected_to>
 					</load>	
+					<load>
+						<type>SOLAR_GENERATOR</type>
+						<control>1</control>
+						<name>Solar_221</name>
+						<phases>ABCN</phases>
+						<nominal_voltage>400</nominal_voltage>
+						<max_power>10000</max_power>
+						<wire_length>49.1</wire_length>
+						<configuration>line_configuration_LV</configuration>
+						<connected_to>Building_22</connected_to>
+					</load>
+					<load>
+						<type>SOLAR_GENERATOR</type>
+						<control>1</control>
+						<name>Solar_222</name>
+						<phases>ABCN</phases>
+						<nominal_voltage>400</nominal_voltage>
+						<max_power>10000</max_power>
+						<wire_length>49.1</wire_length>
+						<configuration>line_configuration_LV</configuration>
+						<connected_to>Building_21</connected_to>
+					</load>
 				</components>
 			</transformer>
 		</elements>
@@ -191,6 +214,28 @@ xsi:schemaLocation="http://www.example.org/network ../../../../target/resources/
 						<wire_length>150</wire_length>
 						<configuration>line_configuration_LV</configuration>
 						<connected_to>transformerCT3</connected_to>
+					</load>
+					<load>
+						<type>SOLAR_GENERATOR</type>
+						<control>1</control>
+						<name>Solar_311</name>
+						<phases>ABCN</phases>
+						<nominal_voltage>400</nominal_voltage>
+						<max_power>10000</max_power>
+						<wire_length>49.1</wire_length>
+						<configuration>line_configuration_LV</configuration>
+						<connected_to>Building_31</connected_to>
+					</load>
+					<load>
+						<type>SOLAR_GENERATOR</type>
+						<control>1</control>
+						<name>Solar_312</name>
+						<phases>ABCN</phases>
+						<nominal_voltage>400</nominal_voltage>
+						<max_power>10000</max_power>
+						<wire_length>49.1</wire_length>
+						<configuration>line_configuration_LV</configuration>
+						<connected_to>Building_32</connected_to>
 					</load>
 					<battery>
 						<name>Battery_31</name>

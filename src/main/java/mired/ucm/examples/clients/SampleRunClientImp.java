@@ -10,7 +10,7 @@ import mired.ucm.simulator.SensorContainerNotFound;
 
 public class SampleRunClientImp {
 	public static void main(String args[]) throws Exception {
-		RunClient.launch(new SGClient() {
+		RunClient.launchAndWaitForServerShutdown(new SGClient() {
 
 			boolean finished = false;
 

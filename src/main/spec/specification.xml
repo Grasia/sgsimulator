@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project cid="30" version="1.2">
+<project cid="42" version="1.2">
 <projectproperties>
 <projectproperty id="extfolder" module="IDK"  name="Extension Module Folder" value="ext"  tooltip="Folder where the IDE will find its new modules" />
- <openeddiagram>smartgrid</openeddiagram> <openeddiagram>System agents</openeddiagram> <openeddiagram>Deliver Power For High demand</openeddiagram> <openeddiagram>Switch off elements to reduce excess of energy</openeddiagram> <openeddiagram>Grid deployment</openeddiagram> <openeddiagram>intial state CT1</openeddiagram> <openeddiagram>initial state CT3</openeddiagram></projectproperties>
+ <openeddiagram>smartgrid</openeddiagram> <openeddiagram>System agents</openeddiagram> <openeddiagram>Deliver Power For High demand</openeddiagram> <openeddiagram>Switch off elements to reduce excess of energy</openeddiagram> <openeddiagram>Grid deployment</openeddiagram> <openeddiagram>Implementation</openeddiagram> <openeddiagram>intial state for agents</openeddiagram></projectproperties>
 <leafpackages>
    <path>
     <package id="Project"/>
@@ -14,11 +14,11 @@
    </path>
    <path>
     <package id="Project"/>
-    <package id="System agents"/>
+    <package id="Switch off elements to reduce excess of energy"/>
    </path>
    <path>
     <package id="Project"/>
-    <package id="Switch off elements to reduce excess of energy"/>
+    <package id="System agents"/>
    </path>
    <path>
     <package id="Project"/>
@@ -26,11 +26,7 @@
    </path>
    <path>
     <package id="Project"/>
-    <package id="intial state CT1"/>
-   </path>
-   <path>
-    <package id="Project"/>
-    <package id="initial state CT3"/>
+    <package id="intial state for agents"/>
    </path>
    <path>
     <package id="Project"/>
@@ -90,7 +86,7 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<object id="Enable PV if high demand and disable if low" type="ingenias.editor.entities.Task">
+<object id="Enable PV Panels" type="ingenias.editor.entities.Task">
 <mapproperties>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
@@ -124,6 +120,16 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
+<object id="FullCase" type="ingenias.editor.entities.DeploymentPackage">
+<objectproperty id="Parameters" collection="true">
+</objectproperty>
+<objectproperty id="AgentsDeployed" collection="true">
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
 <object id="DeploymentUnitByTypeMSEntity0" type="ingenias.editor.entities.DeploymentUnitByTypeMSEntity">
 <objectproperty id="AgentTypeDeployed">
 <object id="Battery Controller" type="ingenias.editor.entities.Agent">
@@ -134,7 +140,7 @@
 </object>
 </objectproperty>
 <objectproperty id="InitialState">
-<object id="BatteryInitialMentalState" type="ingenias.editor.entities.MentalState">
+<object id="BatteryInitialMentalStateBattery_31" type="ingenias.editor.entities.MentalState">
 <mapproperties>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
@@ -157,7 +163,122 @@
 </object>
 </objectproperty>
 <objectproperty id="InitialState">
-<object id="PVInitialMentalState" type="ingenias.editor.entities.MentalState">
+<object id="PVInitialMentalSolar11" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="NumberInstances">1</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="DeploymentUnitByTypeMSEntity2" type="ingenias.editor.entities.DeploymentUnitByTypeMSEntity">
+<objectproperty id="AgentTypeDeployed">
+<object id="PV Controller" type="ingenias.editor.entities.Agent">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="InitialState">
+<object id="PVInitialMSSolar_312" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="NumberInstances">1</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="DeploymentUnitByTypeMSEntity3" type="ingenias.editor.entities.DeploymentUnitByTypeMSEntity">
+<objectproperty id="AgentTypeDeployed">
+<object id="PV Controller" type="ingenias.editor.entities.Agent">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="InitialState">
+<object id="PVInitialSolar_311" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="NumberInstances">1</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="DeploymentUnitByTypeMSEntity4" type="ingenias.editor.entities.DeploymentUnitByTypeMSEntity">
+<objectproperty id="AgentTypeDeployed">
+<object id="PV Controller" type="ingenias.editor.entities.Agent">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="InitialState">
+<object id="PVInitialSolar221" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="NumberInstances">1</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="DeploymentUnitByTypeMSEntity5" type="ingenias.editor.entities.DeploymentUnitByTypeMSEntity">
+<objectproperty id="AgentTypeDeployed">
+<object id="PV Controller" type="ingenias.editor.entities.Agent">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="InitialState">
+<object id="PVinitialSolar_222" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="NumberInstances">1</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="DeploymentUnitByTypeMSEntity6" type="ingenias.editor.entities.DeploymentUnitByTypeMSEntity">
+<objectproperty id="AgentTypeDeployed">
+<object id="PV Controller" type="ingenias.editor.entities.Agent">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="InitialState">
+<object id="PVInitialSolar21" type="ingenias.editor.entities.MentalState">
 <mapproperties>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
@@ -263,7 +384,7 @@
 <key id="ExecutionContext"></key>
 </mapproperties>
 </object>
-<object id="CheckAgain" type="ingenias.editor.entities.FrameFact">
+<object id="30" type="ingenias.editor.entities.FrameFact">
 <objectproperty id="Slots" collection="true">
 </objectproperty>
 <mapproperties>
@@ -338,7 +459,7 @@
 </object>
 </objectproperty>
 <mapproperties>
-<key id="Value">&quot;transformerCT3&quot;</key>
+<key id="Value">&quot;Battery_31&quot;</key>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
@@ -386,7 +507,7 @@
 </object>
 </objectproperty>
 <mapproperties>
-<key id="Value">&quot;transformerCT1&quot;</key>
+<key id="Value">&quot;Solar_11&quot;</key>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
@@ -434,7 +555,7 @@
 </object>
 </objectproperty>
 <mapproperties>
-<key id="Value">&quot;transformerCT3&quot;</key>
+<key id="Value">&quot;Battery_31&quot;</key>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
@@ -447,8 +568,18 @@
 </object>
 <object id="MentalInstanceSpecification2" type="ingenias.editor.entities.MentalInstanceSpecification">
 <objectproperty id="InstanceType">
-<object id="CheckAgain" type="ingenias.editor.entities.FrameFact">
+<object id="AssociatedUnit" type="ingenias.editor.entities.FrameFact">
 <objectproperty id="Slots" collection="true">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
 </objectproperty>
 <mapproperties>
 <key id="Description"></key>
@@ -458,19 +589,260 @@
 </object>
 </objectproperty>
 <objectproperty id="SlotsValues" collection="true">
+<object id="31" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_21&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
 </objectproperty>
 <mapproperties>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<object id="BatteryInitialMentalState" type="ingenias.editor.entities.MentalState">
+<object id="MentalInstanceSpecification3" type="ingenias.editor.entities.MentalInstanceSpecification">
+<objectproperty id="InstanceType">
+<object id="AssociatedUnit" type="ingenias.editor.entities.FrameFact">
+<objectproperty id="Slots" collection="true">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+<key id="ExecutionContext"></key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="SlotsValues" collection="true">
+<object id="32" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_312&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
 <mapproperties>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<object id="PVInitialMentalState" type="ingenias.editor.entities.MentalState">
+<object id="MentalInstanceSpecification4" type="ingenias.editor.entities.MentalInstanceSpecification">
+<objectproperty id="InstanceType">
+<object id="AssociatedUnit" type="ingenias.editor.entities.FrameFact">
+<objectproperty id="Slots" collection="true">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+<key id="ExecutionContext"></key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="SlotsValues" collection="true">
+<object id="38" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_221&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="MentalInstanceSpecification5" type="ingenias.editor.entities.MentalInstanceSpecification">
+<objectproperty id="InstanceType">
+<object id="AssociatedUnit" type="ingenias.editor.entities.FrameFact">
+<objectproperty id="Slots" collection="true">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+<key id="ExecutionContext"></key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="SlotsValues" collection="true">
+<object id="40" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_222&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="MentalInstanceSpecification6" type="ingenias.editor.entities.MentalInstanceSpecification">
+<objectproperty id="InstanceType">
+<object id="AssociatedUnit" type="ingenias.editor.entities.FrameFact">
+<objectproperty id="Slots" collection="true">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+<key id="ExecutionContext"></key>
+</mapproperties>
+</object>
+</objectproperty>
+<objectproperty id="SlotsValues" collection="true">
+<object id="42" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_311&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="BatteryInitialMentalStateBattery_31" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="PVInitialMentalSolar11" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="PVInitialMSSolar_312" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="PVInitialSolar_311" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="PVInitialSolar221" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="PVinitialSolar_222" type="ingenias.editor.entities.MentalState">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="PVInitialSolar21" type="ingenias.editor.entities.MentalState">
 <mapproperties>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
@@ -597,7 +969,7 @@
 </object>
 </objectproperty>
 <mapproperties>
-<key id="Value">&quot;transformerCT3&quot;</key>
+<key id="Value">&quot;Battery_31&quot;</key>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
@@ -616,45 +988,171 @@
 </object>
 </objectproperty>
 <mapproperties>
-<key id="Value">&quot;transformerCT1&quot;</key>
+<key id="Value">&quot;Solar_11&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="31" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_21&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="32" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_312&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="38" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_221&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="40" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_222&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="42" type="ingenias.editor.entities.SlotValueSpecification">
+<objectproperty id="Slot">
+<object id="27" type="ingenias.editor.entities.ObjectSlot">
+<mapproperties>
+<key id="Name">device</key>
+<key id="Value"></key>
+<key id="Type">java.lang.String</key>
+<key id="ObjectValue"></key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+</objectproperty>
+<mapproperties>
+<key id="Value">&quot;Solar_311&quot;</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="WakeUpEach5Secs" type="ingenias.editor.entities.TimeTrigger">
+<mapproperties>
+<key id="RepeatedEachSeconds">9</key>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<object id="TriggerEach3secs" type="ingenias.editor.entities.TimeTrigger">
+<mapproperties>
+<key id="RepeatedEachSeconds">3</key>
 <key id="Description"></key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
 </objects>
 <relationships>
-<relationship id="0" type="ingenias.editor.entities.OHasGroup">
-<object id="0" type="ingenias.editor.entities.OHasGroup">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="TransformationCenters" class="ingenias.editor.entities.OrganizationGroup" roleName="OHasGrouptarget" type="ingenias.editor.entities.OHasGrouptargetRole" dgcid="1065270380">
-<mapproperties>
-<key id="Cardinality"></key>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="OHasGroupsource" type="ingenias.editor.entities.OHasGroupsourceRole" dgcid="1873112304">
-<mapproperties>
-<key id="Cardinality"></key>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
 <relationship id="1" type="ingenias.editor.entities.OHasMember">
 <object id="1" type="ingenias.editor.entities.OHasMember">
 <mapproperties>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="TransformationCenters" class="ingenias.editor.entities.OrganizationGroup" roleName="OHasMembersource" type="ingenias.editor.entities.OHasMembersourceRole" dgcid="1065270380">
+<role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="OHasMembertarget" type="ingenias.editor.entities.OHasMembertargetRole" dgcid="999679199">
 <mapproperties>
 <key id="Cardinality"></key>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="OHasMembertarget" type="ingenias.editor.entities.OHasMembertargetRole" dgcid="2112089107">
+</role><role idEntity="TransformationCenters" class="ingenias.editor.entities.OrganizationGroup" roleName="OHasMembersource" type="ingenias.editor.entities.OHasMembersourceRole" dgcid="50501964">
+<mapproperties>
+<key id="Cardinality"></key>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="3" type="ingenias.editor.entities.GTPursues">
+<object id="3" type="ingenias.editor.entities.GTPursues">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="898751835">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="1377494384">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="0" type="ingenias.editor.entities.OHasGroup">
+<object id="0" type="ingenias.editor.entities.OHasGroup">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="OHasGroupsource" type="ingenias.editor.entities.OHasGroupsourceRole" dgcid="898751835">
+<mapproperties>
+<key id="Cardinality"></key>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="TransformationCenters" class="ingenias.editor.entities.OrganizationGroup" roleName="OHasGrouptarget" type="ingenias.editor.entities.OHasGrouptargetRole" dgcid="50501964">
 <mapproperties>
 <key id="Cardinality"></key>
 <key id="attributeToShow">0</key>
@@ -667,46 +1165,12 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="ReducePowerGridConsumption" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="960624537">
+<role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="898751835">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="1873112304">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
-<relationship id="3" type="ingenias.editor.entities.GTPursues">
-<object id="3" type="ingenias.editor.entities.GTPursues">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="SmartGrid" class="ingenias.editor.entities.Organization" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="1873112304">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="1201796697">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
-<relationship id="13" type="ingenias.editor.entities.WFResponsable">
-<object id="13" type="ingenias.editor.entities.WFResponsable">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="Battery Controller" class="ingenias.editor.entities.Agent" roleName="WFResponsablesource" type="ingenias.editor.entities.WFResponsablesourceRole" dgcid="1748371029">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="WFResponsabletarget" type="ingenias.editor.entities.WFResponsabletargetRole" dgcid="1031863266">
+</role><role idEntity="ReducePowerGridConsumption" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="22345723">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -718,34 +1182,31 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="SMClient" class="ingenias.editor.entities.InternalApplication" roleName="WFUsestarget" type="ingenias.editor.entities.WFUsestargetRole" dgcid="454081908">
+<role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="WFUsessource" type="ingenias.editor.entities.WFUsessourceRole" dgcid="1791052756">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="SMClient" class="ingenias.editor.entities.InternalApplication" roleName="WFUsestarget" type="ingenias.editor.entities.WFUsestargetRole" dgcid="665669054">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 <key id="Label"></key>
 </mapproperties>
-</role><role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="WFUsessource" type="ingenias.editor.entities.WFUsessourceRole" dgcid="1031863266">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
 </role></relationship>
-<relationship id="17" type="ingenias.editor.entities.WFConsumes">
-<object id="17" type="ingenias.editor.entities.WFConsumes">
-<objectproperty id="Condition">
-</objectproperty>
+<relationship id="17" type="ingenias.editor.entities.ApplyTo">
+<object id="17" type="ingenias.editor.entities.ApplyTo">
 <mapproperties>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="WFConsumessource" type="ingenias.editor.entities.WFConsumessourceRole" dgcid="1031863266">
+<role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="ApplyTotarget" type="ingenias.editor.entities.ApplyTotargetRole" dgcid="1791052756">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="CheckAgain" class="ingenias.editor.entities.FrameFact" roleName="WFConsumestarget" type="ingenias.editor.entities.WFConsumestargetRole" dgcid="17720095">
+</role><role idEntity="WakeUpEach5Secs" class="ingenias.editor.entities.TimeTrigger" roleName="ApplyTosource" type="ingenias.editor.entities.ApplyTosourceRole" dgcid="1763636894">
 <mapproperties>
-<key id="Cardinality"></key>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
@@ -758,97 +1219,29 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="GTSatisfiessource" type="ingenias.editor.entities.GTSatisfiessourceRole" dgcid="1031863266">
+<role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTSatisfiestarget" type="ingenias.editor.entities.GTSatisfiestargetRole" dgcid="1871986661">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTSatisfiestarget" type="ingenias.editor.entities.GTSatisfiestargetRole" dgcid="1217943793">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
-<relationship id="33" type="ingenias.editor.entities.GTPursues">
-<object id="33" type="ingenias.editor.entities.GTPursues">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="514161688">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="1607728548">
+</role><role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="GTSatisfiessource" type="ingenias.editor.entities.GTSatisfiessourceRole" dgcid="1791052756">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </role></relationship>
-<relationship id="32" type="ingenias.editor.entities.GTPursues">
-<object id="32" type="ingenias.editor.entities.GTPursues">
+<relationship id="13" type="ingenias.editor.entities.WFResponsable">
+<object id="13" type="ingenias.editor.entities.WFResponsable">
 <mapproperties>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="514161688">
+<role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="WFResponsabletarget" type="ingenias.editor.entities.WFResponsabletargetRole" dgcid="1791052756">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="ReducePowerGridConsumption" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="402603235">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
-<relationship id="12" type="ingenias.editor.entities.WFPlays">
-<object id="12" type="ingenias.editor.entities.WFPlays">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="Battery Controller" class="ingenias.editor.entities.Agent" roleName="WFPlayssource" type="ingenias.editor.entities.WFPlayssourceRole" dgcid="66965782">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="WFPlaystarget" type="ingenias.editor.entities.WFPlaystargetRole" dgcid="514161688">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
-<relationship id="5" type="ingenias.editor.entities.ApplicationBelongsTo">
-<object id="5" type="ingenias.editor.entities.ApplicationBelongsTo">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="SMClient" class="ingenias.editor.entities.InternalApplication" roleName="ApplicationBelongsTotarget" type="ingenias.editor.entities.ApplicationBelongsTotargetRole" dgcid="70385738">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="ApplicationBelongsTosource" type="ingenias.editor.entities.ApplicationBelongsTosourceRole" dgcid="514161688">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role></relationship>
-<relationship id="4" type="ingenias.editor.entities.WFPlays">
-<object id="4" type="ingenias.editor.entities.WFPlays">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-<role idEntity="PV Controller" class="ingenias.editor.entities.Agent" roleName="WFPlayssource" type="ingenias.editor.entities.WFPlayssourceRole" dgcid="1815820808">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="WFPlaystarget" type="ingenias.editor.entities.WFPlaystargetRole" dgcid="514161688">
+</role><role idEntity="Battery Controller" class="ingenias.editor.entities.Agent" roleName="WFResponsablesource" type="ingenias.editor.entities.WFResponsablesourceRole" dgcid="1494187827">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -862,12 +1255,29 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="Enable PV if high demand and disable if low" class="ingenias.editor.entities.Task" roleName="GTSatisfiessource" type="ingenias.editor.entities.GTSatisfiessourceRole" dgcid="1242319440">
+<role idEntity="Enable PV Panels" class="ingenias.editor.entities.Task" roleName="GTSatisfiessource" type="ingenias.editor.entities.GTSatisfiessourceRole" dgcid="1988536844">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTSatisfiestarget" type="ingenias.editor.entities.GTSatisfiestargetRole" dgcid="323827385">
+</role><role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTSatisfiestarget" type="ingenias.editor.entities.GTSatisfiestargetRole" dgcid="115666727">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="23" type="ingenias.editor.entities.ApplyTo">
+<object id="23" type="ingenias.editor.entities.ApplyTo">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="TriggerEach3secs" class="ingenias.editor.entities.TimeTrigger" roleName="ApplyTosource" type="ingenias.editor.entities.ApplyTosourceRole" dgcid="1447436120">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="Enable PV Panels" class="ingenias.editor.entities.Task" roleName="ApplyTotarget" type="ingenias.editor.entities.ApplyTotargetRole" dgcid="1988536844">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -879,12 +1289,12 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="Enable PV if high demand and disable if low" class="ingenias.editor.entities.Task" roleName="WFResponsabletarget" type="ingenias.editor.entities.WFResponsabletargetRole" dgcid="1242319440">
+<role idEntity="Enable PV Panels" class="ingenias.editor.entities.Task" roleName="WFResponsabletarget" type="ingenias.editor.entities.WFResponsabletargetRole" dgcid="1988536844">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="PV Controller" class="ingenias.editor.entities.Agent" roleName="WFResponsablesource" type="ingenias.editor.entities.WFResponsablesourceRole" dgcid="605814541">
+</role><role idEntity="PV Controller" class="ingenias.editor.entities.Agent" roleName="WFResponsablesource" type="ingenias.editor.entities.WFResponsablesourceRole" dgcid="926294408">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -896,52 +1306,152 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="Enable PV if high demand and disable if low" class="ingenias.editor.entities.Task" roleName="WFUsessource" type="ingenias.editor.entities.WFUsessourceRole" dgcid="1242319440">
+<role idEntity="Enable PV Panels" class="ingenias.editor.entities.Task" roleName="WFUsessource" type="ingenias.editor.entities.WFUsessourceRole" dgcid="1988536844">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="SMClient" class="ingenias.editor.entities.InternalApplication" roleName="WFUsestarget" type="ingenias.editor.entities.WFUsestargetRole" dgcid="1606548621">
+</role><role idEntity="SMClient" class="ingenias.editor.entities.InternalApplication" roleName="WFUsestarget" type="ingenias.editor.entities.WFUsestargetRole" dgcid="2134794769">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 <key id="Label"></key>
 </mapproperties>
 </role></relationship>
-<relationship id="23" type="ingenias.editor.entities.WFConsumes">
-<object id="23" type="ingenias.editor.entities.WFConsumes">
+<relationship id="50" type="ingenias.editor.entities.GTModifies">
+<object id="50" type="ingenias.editor.entities.GTModifies">
 <objectproperty id="Condition">
 </objectproperty>
 <mapproperties>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="Enable PV if high demand and disable if low" class="ingenias.editor.entities.Task" roleName="WFConsumessource" type="ingenias.editor.entities.WFConsumessourceRole" dgcid="1242319440">
+<role idEntity="Enable PV Panels" class="ingenias.editor.entities.Task" roleName="WFConsumessource" type="ingenias.editor.entities.WFConsumessourceRole" dgcid="1988536844">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="CheckAgain" class="ingenias.editor.entities.FrameFact" roleName="WFConsumestarget" type="ingenias.editor.entities.WFConsumestargetRole" dgcid="101072695">
+</role><role idEntity="AssociatedUnit" class="ingenias.editor.entities.FrameFact" roleName="WFConsumestarget" type="ingenias.editor.entities.WFConsumestargetRole" dgcid="1283558693">
 <mapproperties>
 <key id="Cardinality"></key>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </role></relationship>
-<relationship id="19" type="ingenias.editor.entities.GTSatisfies">
-<object id="19" type="ingenias.editor.entities.GTSatisfies">
-<objectproperty id="SatisfactionCondition">
-</objectproperty>
+<relationship id="5" type="ingenias.editor.entities.ApplicationBelongsTo">
+<object id="5" type="ingenias.editor.entities.ApplicationBelongsTo">
 <mapproperties>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="Enable PV if high demand and disable if low" class="ingenias.editor.entities.Task" roleName="GTSatisfiessource" type="ingenias.editor.entities.GTSatisfiessourceRole" dgcid="1242319440">
+<role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="ApplicationBelongsTosource" type="ingenias.editor.entities.ApplicationBelongsTosourceRole" dgcid="852186854">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="ReducePowerGridConsumption" class="ingenias.editor.entities.Goal" roleName="GTSatisfiestarget" type="ingenias.editor.entities.GTSatisfiestargetRole" dgcid="52210207">
+</role><role idEntity="SMClient" class="ingenias.editor.entities.InternalApplication" roleName="ApplicationBelongsTotarget" type="ingenias.editor.entities.ApplicationBelongsTotargetRole" dgcid="1051108035">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="12" type="ingenias.editor.entities.WFPlays">
+<object id="12" type="ingenias.editor.entities.WFPlays">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="WFPlaystarget" type="ingenias.editor.entities.WFPlaystargetRole" dgcid="852186854">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="Battery Controller" class="ingenias.editor.entities.Agent" roleName="WFPlayssource" type="ingenias.editor.entities.WFPlayssourceRole" dgcid="359796516">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="33" type="ingenias.editor.entities.GTPursues">
+<object id="33" type="ingenias.editor.entities.GTPursues">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="LookForReducedBilling" class="ingenias.editor.entities.Goal" roleName="GTPursuestarget" type="ingenias.editor.entities.GTPursuestargetRole" dgcid="185795800">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="GTPursuessource" type="ingenias.editor.entities.GTPursuessourceRole" dgcid="852186854">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="4" type="ingenias.editor.entities.WFPlays">
+<object id="4" type="ingenias.editor.entities.WFPlays">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="TCManager" class="ingenias.editor.entities.Role" roleName="WFPlaystarget" type="ingenias.editor.entities.WFPlaystargetRole" dgcid="852186854">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="PV Controller" class="ingenias.editor.entities.Agent" roleName="WFPlayssource" type="ingenias.editor.entities.WFPlayssourceRole" dgcid="1846499515">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="48" type="ingenias.editor.entities.DefinesDeployment">
+<object id="48" type="ingenias.editor.entities.DefinesDeployment">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="DeploymentUnitByTypeMSEntity5" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="1924121576">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="FullCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1193102071">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="43" type="ingenias.editor.entities.DefinesDeployment">
+<object id="43" type="ingenias.editor.entities.DefinesDeployment">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="DeploymentUnitByTypeMSEntity0" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="270551509">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="FullCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1193102071">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="47" type="ingenias.editor.entities.DefinesDeployment">
+<object id="47" type="ingenias.editor.entities.DefinesDeployment">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="DeploymentUnitByTypeMSEntity4" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="1340931685">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="FullCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1193102071">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -953,12 +1463,63 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="SampleCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1344375895">
+<role idEntity="DeploymentUnitByTypeMSEntity1" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="484436112">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="DeploymentUnitByTypeMSEntity1" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="876928371">
+</role><role idEntity="SampleCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1444224586">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="45" type="ingenias.editor.entities.DefinesDeployment">
+<object id="45" type="ingenias.editor.entities.DefinesDeployment">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="DeploymentUnitByTypeMSEntity2" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="563264684">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="FullCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1193102071">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="46" type="ingenias.editor.entities.DefinesDeployment">
+<object id="46" type="ingenias.editor.entities.DefinesDeployment">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="DeploymentUnitByTypeMSEntity3" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="962869150">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="FullCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1193102071">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="44" type="ingenias.editor.entities.DefinesDeployment">
+<object id="44" type="ingenias.editor.entities.DefinesDeployment">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="DeploymentUnitByTypeMSEntity1" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="484436112">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="FullCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1193102071">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -970,12 +1531,143 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="SampleCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1344375895">
+<role idEntity="DeploymentUnitByTypeMSEntity0" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="270551509">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="DeploymentUnitByTypeMSEntity0" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="668770715">
+</role><role idEntity="SampleCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1444224586">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="49" type="ingenias.editor.entities.DefinesDeployment">
+<object id="49" type="ingenias.editor.entities.DefinesDeployment">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+<role idEntity="DeploymentUnitByTypeMSEntity6" class="ingenias.editor.entities.DeploymentUnitByTypeMSEntity" roleName="DefinesDeploymentsource" type="ingenias.editor.entities.DefinesDeploymentsourceRole" dgcid="580844962">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="FullCase" class="ingenias.editor.entities.DeploymentPackage" roleName="DefinesDeploymenttarget" type="ingenias.editor.entities.DefinesDeploymenttargetRole" dgcid="1193102071">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="37" type="ingenias.editor.entities.AContainsME">
+<object id="37" type="ingenias.editor.entities.AContainsME">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</object>
+<role idEntity="MentalInstanceSpecification4" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1600804702">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</role><role idEntity="PVInitialSolar221" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="1234732953">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="19" type="ingenias.editor.entities.AContainsME">
+<object id="19" type="ingenias.editor.entities.AContainsME">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</object>
+<role idEntity="MentalInstanceSpecification2" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1444598836">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</role><role idEntity="PVInitialSolar21" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="1444603809">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role></relationship>
+<relationship id="22" type="ingenias.editor.entities.AContainsME">
+<object id="22" type="ingenias.editor.entities.AContainsME">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</object>
+<role idEntity="BatteryInitialMentalStateBattery_31" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="478035819">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="MentalInstanceSpecification1" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1873755464">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</role></relationship>
+<relationship id="39" type="ingenias.editor.entities.AContainsME">
+<object id="39" type="ingenias.editor.entities.AContainsME">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</object>
+<role idEntity="PVinitialSolar_222" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="414966749">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="MentalInstanceSpecification5" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="549180633">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</role></relationship>
+<relationship id="41" type="ingenias.editor.entities.AContainsME">
+<object id="41" type="ingenias.editor.entities.AContainsME">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</object>
+<role idEntity="PVInitialSolar_311" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="1377895419">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</role><role idEntity="MentalInstanceSpecification6" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1520120526">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</role></relationship>
+<relationship id="36" type="ingenias.editor.entities.AContainsME">
+<object id="36" type="ingenias.editor.entities.AContainsME">
+<mapproperties>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</object>
+<role idEntity="MentalInstanceSpecification3" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1533846421">
+<mapproperties>
+<key id="attributeToShow">0</key>
+<key id="_view_type">INGENIAS</key>
+<key id="Label"></key>
+</mapproperties>
+</role><role idEntity="PVInitialMSSolar_312" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="1673003558">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -988,73 +1680,16 @@
 <key id="Label"></key>
 </mapproperties>
 </object>
-<role idEntity="PVInitialMentalState" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="182776261">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="MentalInstanceSpecification0" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1369011389">
+<role idEntity="MentalInstanceSpecification0" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="77871164">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 <key id="Label"></key>
 </mapproperties>
-</role></relationship>
-<relationship id="30" type="ingenias.editor.entities.AContainsME">
-<object id="30" type="ingenias.editor.entities.AContainsME">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
-</mapproperties>
-</object>
-<role idEntity="PVInitialMentalState" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="182776261">
+</role><role idEntity="PVInitialMentalSolar11" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="43166879">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="MentalInstanceSpecification2" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1250927448">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
-</mapproperties>
-</role></relationship>
-<relationship id="31" type="ingenias.editor.entities.AContainsME">
-<object id="31" type="ingenias.editor.entities.AContainsME">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
-</mapproperties>
-</object>
-<role idEntity="BatteryInitialMentalState" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="690695317">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="MentalInstanceSpecification2" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="599197435">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
-</mapproperties>
-</role></relationship>
-<relationship id="22" type="ingenias.editor.entities.AContainsME">
-<object id="22" type="ingenias.editor.entities.AContainsME">
-<mapproperties>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
-</mapproperties>
-</object>
-<role idEntity="BatteryInitialMentalState" class="ingenias.editor.entities.MentalState" roleName="AContainsMEsource" type="ingenias.editor.entities.AContainsMEsourceRole" dgcid="690695317">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</role><role idEntity="MentalInstanceSpecification1" class="ingenias.editor.entities.MentalInstanceSpecification" roleName="AContainsMEtarget" type="ingenias.editor.entities.AContainsMEtargetRole" dgcid="1090728986">
-<mapproperties>
-<key id="attributeToShow">0</key>
-<key id="_view_type">INGENIAS</key>
-<key id="Label"></key>
 </mapproperties>
 </role></relationship>
 <relationship id="34" type="ingenias.editor.entities.CDUsesCode">
@@ -1063,12 +1698,12 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="INGENIASCodeComponent0" class="ingenias.editor.entities.INGENIASCodeComponent" roleName="CDUsesCodetarget" type="ingenias.editor.entities.CDUsesCodetargetRole" dgcid="378918998">
+<role idEntity="INGENIASCodeComponent0" class="ingenias.editor.entities.INGENIASCodeComponent" roleName="CDUsesCodetarget" type="ingenias.editor.entities.CDUsesCodetargetRole" dgcid="2128876147">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="Enable PV if high demand and disable if low" class="ingenias.editor.entities.Task" roleName="CDUsesCodesource" type="ingenias.editor.entities.CDUsesCodesourceRole" dgcid="1648080471">
+</role><role idEntity="Enable PV Panels" class="ingenias.editor.entities.Task" roleName="CDUsesCodesource" type="ingenias.editor.entities.CDUsesCodesourceRole" dgcid="1323866823">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -1080,12 +1715,12 @@
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
 </object>
-<role idEntity="INGENIASCodeComponent1" class="ingenias.editor.entities.INGENIASCodeComponent" roleName="CDUsesCodetarget" type="ingenias.editor.entities.CDUsesCodetargetRole" dgcid="1223226337">
+<role idEntity="INGENIASCodeComponent1" class="ingenias.editor.entities.INGENIASCodeComponent" roleName="CDUsesCodetarget" type="ingenias.editor.entities.CDUsesCodetargetRole" dgcid="722048480">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
 </mapproperties>
-</role><role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="CDUsesCodesource" type="ingenias.editor.entities.CDUsesCodesourceRole" dgcid="1798061506">
+</role><role idEntity="Analyse current status and enable battery if full" class="ingenias.editor.entities.Task" roleName="CDUsesCodesource" type="ingenias.editor.entities.CDUsesCodesourceRole" dgcid="1303793230">
 <mapproperties>
 <key id="attributeToShow">0</key>
 <key id="_view_type">INGENIAS</key>
@@ -1107,117 +1742,7 @@
 
 	<graph>
 			
-	<node id="0" nid="node5" type="OHasGroup">
-		<attr name="bounds">
-			<rectangle x="45" y="81" width="70" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node3">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node1">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="TransformationCenters" nid="node3" type="OrganizationGroup">
-		<attr name="bounds">
-			<rectangle x="8" y="121" width="146" height="40"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="2" nid="node7" type="GTPursues">
-		<attr name="bounds">
-			<rectangle x="138" y="26" width="65" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node1">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node0">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="SmartGrid" nid="node1" type="Organization">
-		<attr name="bounds">
-			<rectangle x="42" y="16" width="76" height="40"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="1" nid="node6" type="OHasMember">
+	<node id="1" nid="node5" type="OHasMember">
 		<attr name="bounds">
 			<rectangle x="40" y="176" width="81" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1261,7 +1786,117 @@
 	</connected>
 	</node>
 			
-	<node id="3" nid="node8" type="GTPursues">
+	<node id="SmartGrid" nid="node1" type="Organization">
+		<attr name="bounds">
+			<rectangle x="42" y="16" width="76" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="2" nid="node8" type="GTPursues">
+		<attr name="bounds">
+			<rectangle x="138" y="26" width="65" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node1">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node0">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="TransformationCenters" nid="node3" type="OrganizationGroup">
+		<attr name="bounds">
+			<rectangle x="8" y="121" width="146" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="0" nid="node7" type="OHasGroup">
+		<attr name="bounds">
+			<rectangle x="45" y="81" width="70" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node3">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node1">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="3" nid="node6" type="GTPursues">
 		<attr name="bounds">
 			<rectangle x="144" y="62" width="65" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1331,11 +1966,11 @@
 	</node><parentship>
 </parentship>
 <entityconstraints>
-<cellconstraint id="node3:INGENIAS">
-<currentcell id="node3" height="55" width="144"/>
-</cellconstraint>
 <cellconstraint id="node1:INGENIAS">
 <currentcell id="node1" height="56" width="63"/>
+</cellconstraint>
+<cellconstraint id="node3:INGENIAS">
+<currentcell id="node3" height="55" width="144"/>
 </cellconstraint>
 <cellconstraint id="node2:INGENIAS">
 <currentcell id="node2" height="43" width="70"/>
@@ -1350,7 +1985,29 @@
 			
 	<node id="node5">
 		<attr name="bounds">
-			<rectangle x="45" y="81" width="70" height="15"></rectangle>		</attr>
+			<rectangle x="40" y="176" width="81" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node1">
+		<attr name="bounds">
+			<rectangle x="42" y="16" width="76" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node8">
+		<attr name="bounds">
+			<rectangle x="138" y="26" width="65" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -1372,20 +2029,9 @@
 			
 	<node id="node7">
 		<attr name="bounds">
-			<rectangle x="138" y="26" width="65" height="15"></rectangle>		</attr>
+			<rectangle x="45" y="81" width="70" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node1">
-		<attr name="bounds">
-			<rectangle x="42" y="16" width="76" height="40"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
 		</attr>
 
 
@@ -1393,17 +2039,6 @@
 	</node>
 			
 	<node id="node6">
-		<attr name="bounds">
-			<rectangle x="40" y="176" width="81" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node8">
 		<attr name="bounds">
 			<rectangle x="144" y="62" width="65" height="15"></rectangle>		</attr>
 		<attr name="view">
@@ -1454,74 +2089,16 @@
 
 	<graph>
 			
-	<node id="LookForReducedBilling" nid="node1" type="Goal">
+	<node id="WakeUpEach5Secs" nid="node4" type="TimeTrigger">
 		<attr name="bounds">
-			<rectangle x="390" y="19" width="170" height="58"></rectangle>		</attr>
+			<rectangle x="511" y="132" width="155" height="35"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="13" nid="node5" type="WFResponsable">
+	<node id="Analyse current status and enable battery if full" nid="node5" type="Task">
 		<attr name="bounds">
-			<rectangle x="193" y="99" width="89" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node3">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node0">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="CheckAgain" nid="node4" type="FrameFact">
-		<attr name="bounds">
-			<rectangle x="531" y="140" width="75" height="32"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="Battery Controller" nid="node3" type="Agent">
-		<attr name="bounds">
-			<rectangle x="185" y="18" width="110" height="57"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="SMClient" nid="node2" type="InternalApplication">
-		<attr name="bounds">
-			<rectangle x="15" y="221" width="451" height="85"></rectangle>		</attr>
+			<rectangle x="76" y="134" width="301" height="40"></rectangle>		</attr>
 		<attr name="view">
 			<string>UML</string>
 		</attr>
@@ -1530,313 +2107,9 @@
 
 	</node>
 			
-	<node id="15" nid="node8" type="GTSatisfies">
+	<node id="17" nid="node1" type="ApplyTo">
 		<attr name="bounds">
-			<rectangle x="301" y="105" width="70" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node0">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node1">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="17" nid="node7" type="WFConsumes">
-		<attr name="bounds">
-			<rectangle x="419" y="149" width="80" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node0">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node4">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="Analyse current status and enable battery if full" nid="node0" type="Task">
-		<attr name="bounds">
-			<rectangle x="87" y="137" width="301" height="40"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="14" nid="node6" type="WFUses">
-		<attr name="bounds">
-			<rectangle x="209" y="192" width="52" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node0">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node2">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node><parentship>
-</parentship>
-<entityconstraints>
-<cellconstraint id="node2:INGENIAS">
-<currentcell id="node2" height="46" width="125"/>
-</cellconstraint>
-<cellconstraint id="node0:INGENIAS">
-<currentcell id="node0" height="43" width="299"/>
-</cellconstraint>
-</entityconstraints>
-
-
-	</graph>
-
-
-	<layout>
-			
-	<node id="node1">
-		<attr name="bounds">
-			<rectangle x="390" y="19" width="170" height="58"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node5">
-		<attr name="bounds">
-			<rectangle x="193" y="99" width="89" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node4">
-		<attr name="bounds">
-			<rectangle x="531" y="140" width="75" height="32"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node3">
-		<attr name="bounds">
-			<rectangle x="185" y="18" width="110" height="57"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node2">
-		<attr name="bounds">
-			<rectangle x="15" y="221" width="451" height="85"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node8">
-		<attr name="bounds">
-			<rectangle x="301" y="105" width="70" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node7">
-		<attr name="bounds">
-			<rectangle x="419" y="149" width="80" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node0">
-		<attr name="bounds">
-			<rectangle x="87" y="137" width="301" height="40"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node6">
-		<attr name="bounds">
-			<rectangle x="209" y="192" width="52" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-	</layout>
-</gxl> </model>
- <model id="System agents" type="ingenias.editor.models.AgentModelModelJGraph">
-<object id="System agents" type="ingenias.editor.entities.AgentModelDataEntity">
-<mapproperties>
-<key id="Description"></key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-  <path>
-    <package id="Project"/>
-   </path>
-<gxl>
-
-	<graph>
-			
-	<node id="32" nid="node7" type="GTPursues">
-		<attr name="bounds">
-			<rectangle x="172" y="126" width="65" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node1">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node2">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="4" nid="node10" type="WFPlays">
-		<attr name="bounds">
-			<rectangle x="44" y="73" width="54" height="15"></rectangle>		</attr>
+			<rectangle x="419" y="144" width="51" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -1844,64 +2117,6 @@
 
 
 	<connected id="node4">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node1">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="PV Controller" nid="node4" type="Agent">
-		<attr name="bounds">
-			<rectangle x="30" y="0" width="81" height="57"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="Battery Controller" nid="node3" type="Agent">
-		<attr name="bounds">
-			<rectangle x="15" y="188" width="110" height="57"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="33" nid="node6" type="GTPursues">
-		<attr name="bounds">
-			<rectangle x="175" y="160" width="65" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node1">
 
 
 
@@ -1936,16 +2151,9 @@
 	</connected>
 	</node>
 			
-	<node id="ReducePowerGridConsumption" nid="node2" type="Goal">
+	<node id="SMClient" nid="node8" type="InternalApplication">
 		<attr name="bounds">
-			<rectangle x="301" y="119" width="228" height="58"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="SMClient" nid="node0" type="InternalApplication">
-		<attr name="bounds">
-			<rectangle x="260" y="11" width="451" height="85"></rectangle>		</attr>
+			<rectangle x="0" y="218" width="451" height="85"></rectangle>		</attr>
 		<attr name="view">
 			<string>UML</string>
 		</attr>
@@ -1954,16 +2162,23 @@
 
 	</node>
 			
-	<node id="5" nid="node9" type="ApplicationBelongsTo">
+	<node id="LookForReducedBilling" nid="node7" type="Goal">
 		<attr name="bounds">
-			<rectangle x="126" y="98" width="114" height="15"></rectangle>		</attr>
+			<rectangle x="200" y="26" width="170" height="58"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="15" nid="node2" type="GTSatisfies">
+		<attr name="bounds">
+			<rectangle x="218" y="102" width="70" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 
 
-	<connected id="node1">
+	<connected id="node5">
 
 
 
@@ -1979,7 +2194,7 @@
 
 
 	</connected>
-	<connected id="node0">
+	<connected id="node7">
 
 
 
@@ -1998,23 +2213,16 @@
 	</connected>
 	</node>
 			
-	<node id="LookForReducedBilling" nid="node5" type="Goal">
+	<node id="14" nid="node0" type="WFUses">
 		<attr name="bounds">
-			<rectangle x="307" y="197" width="170" height="58"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="12" nid="node8" type="WFPlays">
-		<attr name="bounds">
-			<rectangle x="43" y="160" width="54" height="15"></rectangle>		</attr>
+			<rectangle x="200" y="189" width="52" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 
 
-	<connected id="node3">
+	<connected id="node5">
 
 
 
@@ -2030,7 +2238,7 @@
 
 
 	</connected>
-	<connected id="node1">
+	<connected id="node8">
 
 
 
@@ -2049,16 +2257,63 @@
 	</connected>
 	</node>
 			
-	<node id="TCManager" nid="node1" type="Role">
+	<node id="13" nid="node3" type="WFResponsable">
 		<attr name="bounds">
-			<rectangle x="37" y="103" width="70" height="43"></rectangle>		</attr>
+			<rectangle x="126" y="108" width="89" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node6">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node5">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="Battery Controller" nid="node6" type="Agent">
+		<attr name="bounds">
+			<rectangle x="34" y="31" width="110" height="57"></rectangle>		</attr>
 
 
 	</node><parentship>
 </parentship>
 <entityconstraints>
-<cellconstraint id="node0:INGENIAS">
-<currentcell id="node0" height="46" width="125"/>
+<cellconstraint id="node5:INGENIAS">
+<currentcell id="node5" height="43" width="299"/>
+</cellconstraint>
+<cellconstraint id="node8:INGENIAS">
+<currentcell id="node8" height="46" width="125"/>
 </cellconstraint>
 </entityconstraints>
 
@@ -2068,63 +2323,16 @@
 
 	<layout>
 			
-	<node id="node7">
-		<attr name="bounds">
-			<rectangle x="172" y="126" width="65" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node10">
-		<attr name="bounds">
-			<rectangle x="44" y="73" width="54" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
 	<node id="node4">
 		<attr name="bounds">
-			<rectangle x="30" y="0" width="81" height="57"></rectangle>		</attr>
+			<rectangle x="511" y="132" width="155" height="35"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="node3">
+	<node id="node5">
 		<attr name="bounds">
-			<rectangle x="15" y="188" width="110" height="57"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node6">
-		<attr name="bounds">
-			<rectangle x="175" y="160" width="65" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node2">
-		<attr name="bounds">
-			<rectangle x="301" y="119" width="228" height="58"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node0">
-		<attr name="bounds">
-			<rectangle x="260" y="11" width="451" height="85"></rectangle>		</attr>
+			<rectangle x="76" y="134" width="301" height="40"></rectangle>		</attr>
 		<attr name="view">
 			<string>UML</string>
 		</attr>
@@ -2133,27 +2341,38 @@
 
 	</node>
 			
-	<node id="node9">
+	<node id="node1">
 		<attr name="bounds">
-			<rectangle x="126" y="98" width="114" height="15"></rectangle>		</attr>
+			<rectangle x="419" y="144" width="51" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
-
-
-	</node>
-			
-	<node id="node5">
-		<attr name="bounds">
-			<rectangle x="307" y="197" width="170" height="58"></rectangle>		</attr>
 
 
 	</node>
 			
 	<node id="node8">
 		<attr name="bounds">
-			<rectangle x="43" y="160" width="54" height="15"></rectangle>		</attr>
+			<rectangle x="0" y="218" width="451" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node7">
+		<attr name="bounds">
+			<rectangle x="200" y="26" width="170" height="58"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node2">
+		<attr name="bounds">
+			<rectangle x="218" y="102" width="70" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2162,9 +2381,31 @@
 
 	</node>
 			
-	<node id="node1">
+	<node id="node0">
 		<attr name="bounds">
-			<rectangle x="37" y="103" width="70" height="43"></rectangle>		</attr>
+			<rectangle x="200" y="189" width="52" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node3">
+		<attr name="bounds">
+			<rectangle x="126" y="108" width="89" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node6">
+		<attr name="bounds">
+			<rectangle x="34" y="31" width="110" height="57"></rectangle>		</attr>
 
 
 	</node>
@@ -2184,16 +2425,34 @@
 
 	<graph>
 			
-	<node id="19" nid="node10" type="GTSatisfies">
+	<node id="PV Controller" nid="node7" type="Agent">
 		<attr name="bounds">
-			<rectangle x="270" y="100" width="70" height="15"></rectangle>		</attr>
+			<rectangle x="52" y="17" width="81" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="SMClient" nid="node9" type="InternalApplication">
+		<attr name="bounds">
+			<rectangle x="5" y="214" width="451" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="21" nid="node3" type="WFUses">
+		<attr name="bounds">
+			<rectangle x="204" y="183" width="52" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 
 
-	<connected id="node4">
+	<connected id="node5">
 
 
 
@@ -2209,7 +2468,7 @@
 
 
 	</connected>
-	<connected id="node0">
+	<connected id="node9">
 
 
 
@@ -2228,16 +2487,60 @@
 	</connected>
 	</node>
 			
-	<node id="23" nid="node9" type="WFConsumes">
+	<node id="20" nid="node0" type="GTSatisfies">
 		<attr name="bounds">
-			<rectangle x="359" y="178" width="80" height="15"></rectangle>		</attr>
+			<rectangle x="233" y="96" width="70" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 
 
-	<connected id="node4">
+	<connected id="node5">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node8">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="18" nid="node2" type="WFResponsable">
+		<attr name="bounds">
+			<rectangle x="109" y="83" width="89" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node7">
 
 
 
@@ -2272,53 +2575,9 @@
 	</connected>
 	</node>
 			
-	<node id="21" nid="node8" type="WFUses">
+	<node id="AssociatedUnit" nid="node6" type="FrameFact">
 		<attr name="bounds">
-			<rectangle x="178" y="194" width="52" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node4">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node2">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="Enable PV if high demand and disable if low" nid="node4" type="Task">
-		<attr name="bounds">
-			<rectangle x="47" y="138" width="274" height="40"></rectangle>		</attr>
+			<rectangle x="469" y="127" width="178" height="55"></rectangle>		</attr>
 		<attr name="view">
 			<string>UML</string>
 		</attr>
@@ -2327,30 +2586,442 @@
 
 	</node>
 			
-	<node id="PV Controller" nid="node1" type="Agent">
+	<node id="Enable PV Panels" nid="node5" type="Task">
 		<attr name="bounds">
-			<rectangle x="141" y="27" width="81" height="57"></rectangle>		</attr>
+			<rectangle x="174" y="126" width="111" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
 
 
 	</node>
 			
-	<node id="LookForReducedBilling" nid="node3" type="Goal">
+	<node id="23" nid="node1" type="ApplyTo">
 		<attr name="bounds">
-			<rectangle x="450" y="68" width="170" height="58"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="20" nid="node6" type="GTSatisfies">
-		<attr name="bounds">
-			<rectangle x="349" y="116" width="70" height="15"></rectangle>		</attr>
+			<rectangle x="340" y="104" width="51" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 
 
+	<connected id="node10">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node5">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="50" nid="node4" type="GTModifies">
+		<attr name="bounds">
+			<rectangle x="344" y="142" width="66" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node5">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node6">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="TriggerEach3secs" nid="node10" type="TimeTrigger">
+		<attr name="bounds">
+			<rectangle x="445" y="54" width="147" height="35"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="LookForReducedBilling" nid="node8" type="Goal">
+		<attr name="bounds">
+			<rectangle x="231" y="22" width="170" height="58"></rectangle>		</attr>
+
+
+	</node><parentship>
+</parentship>
+<entityconstraints>
+<cellconstraint id="node9:INGENIAS">
+<currentcell id="node9" height="46" width="125"/>
+</cellconstraint>
+<cellconstraint id="node6:INGENIAS">
+<currentcell id="node6" height="32" width="96"/>
+</cellconstraint>
+<cellconstraint id="node5:INGENIAS">
+<currentcell id="node5" height="43" width="272"/>
+</cellconstraint>
+</entityconstraints>
+
+
+	</graph>
+
+
+	<layout>
+			
+	<node id="node7">
+		<attr name="bounds">
+			<rectangle x="52" y="17" width="81" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node9">
+		<attr name="bounds">
+			<rectangle x="5" y="214" width="451" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node3">
+		<attr name="bounds">
+			<rectangle x="204" y="183" width="52" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node0">
+		<attr name="bounds">
+			<rectangle x="233" y="96" width="70" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node2">
+		<attr name="bounds">
+			<rectangle x="109" y="83" width="89" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node6">
+		<attr name="bounds">
+			<rectangle x="469" y="127" width="178" height="55"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node5">
+		<attr name="bounds">
+			<rectangle x="174" y="126" width="111" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node1">
+		<attr name="bounds">
+			<rectangle x="340" y="104" width="51" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node4">
+		<attr name="bounds">
+			<rectangle x="344" y="142" width="66" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node10">
+		<attr name="bounds">
+			<rectangle x="445" y="54" width="147" height="35"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node8">
+		<attr name="bounds">
+			<rectangle x="231" y="22" width="170" height="58"></rectangle>		</attr>
+
+
+	</node>
+	</layout>
+</gxl> </model>
+ <model id="System agents" type="ingenias.editor.models.AgentModelModelJGraph">
+<object id="System agents" type="ingenias.editor.entities.AgentModelDataEntity">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+  <path>
+    <package id="Project"/>
+   </path>
+<gxl>
+
+	<graph>
+			
+	<node id="4" nid="node8" type="WFPlays">
+		<attr name="bounds">
+			<rectangle x="44" y="73" width="54" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node2">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node1">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="Battery Controller" nid="node0" type="Agent">
+		<attr name="bounds">
+			<rectangle x="15" y="188" width="110" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="33" nid="node7" type="GTPursues">
+		<attr name="bounds">
+			<rectangle x="126" y="135" width="65" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node1">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
 	<connected id="node4">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="PV Controller" nid="node2" type="Agent">
+		<attr name="bounds">
+			<rectangle x="30" y="0" width="81" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="TCManager" nid="node1" type="Role">
+		<attr name="bounds">
+			<rectangle x="37" y="103" width="70" height="43"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="SMClient" nid="node3" type="InternalApplication">
+		<attr name="bounds">
+			<rectangle x="224" y="9" width="451" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="LookForReducedBilling" nid="node4" type="Goal">
+		<attr name="bounds">
+			<rectangle x="209" y="143" width="170" height="58"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="12" nid="node6" type="WFPlays">
+		<attr name="bounds">
+			<rectangle x="43" y="160" width="54" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node0">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node1">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="5" nid="node5" type="ApplicationBelongsTo">
+		<attr name="bounds">
+			<rectangle x="108" y="99" width="114" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node1">
 
 
 
@@ -2383,18 +3054,1117 @@
 
 
 	</connected>
-	</node>
+	</node><parentship>
+</parentship>
+<entityconstraints>
+<cellconstraint id="node3:INGENIAS">
+<currentcell id="node3" height="46" width="53"/>
+</cellconstraint>
+<cellconstraint id="node3:UML">
+<currentcell id="node3" height="85" width="451"/>
+</cellconstraint>
+</entityconstraints>
+
+
+	</graph>
+
+
+	<layout>
 			
-	<node id="18" nid="node7" type="WFResponsable">
+	<node id="node8">
 		<attr name="bounds">
-			<rectangle x="138" y="104" width="89" height="15"></rectangle>		</attr>
+			<rectangle x="44" y="73" width="54" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
 
 
 
-	<connected id="node1">
+	</node>
+			
+	<node id="node0">
+		<attr name="bounds">
+			<rectangle x="15" y="188" width="110" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node7">
+		<attr name="bounds">
+			<rectangle x="126" y="135" width="65" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node2">
+		<attr name="bounds">
+			<rectangle x="30" y="0" width="81" height="57"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node1">
+		<attr name="bounds">
+			<rectangle x="37" y="103" width="70" height="43"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node3">
+		<attr name="bounds">
+			<rectangle x="224" y="9" width="451" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node4">
+		<attr name="bounds">
+			<rectangle x="209" y="143" width="170" height="58"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node6">
+		<attr name="bounds">
+			<rectangle x="43" y="160" width="54" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node5">
+		<attr name="bounds">
+			<rectangle x="108" y="99" width="114" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+	</layout>
+</gxl> </model>
+ <model id="Grid deployment" type="ingenias.editor.models.DeployDiagramModelJGraph">
+<object id="Grid deployment" type="ingenias.editor.entities.DeployDiagramDataEntity">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+  <path>
+    <package id="Project"/>
+   </path>
+<gxl>
+
+	<graph>
+			
+	<node id="DeploymentUnitByTypeMSEntity2" nid="node13" type="DeploymentUnitByTypeMSEntity">
+		<attr name="bounds">
+			<rectangle x="27" y="226" width="232" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="25" nid="node3" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="99" y="86" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node9">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="384.0" y="130.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="152.0" y="162.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node12">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="384.0" y="130.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="554.0" y="107.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="DeploymentUnitByTypeMSEntity5" nid="node10" type="DeploymentUnitByTypeMSEntity">
+		<attr name="bounds">
+			<rectangle x="253" y="419" width="214" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="46" nid="node5" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="339" y="293" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node14">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="337.0" y="296.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="135.0" y="361.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node15">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="337.0" y="296.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="491.0" y="248.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="43" nid="node1" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="547" y="155" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node17">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="337.0" y="151.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="173.0" y="49.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node15">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="337.0" y="151.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="491.0" y="248.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="SampleCase" nid="node12" type="DeploymentPackage">
+		<attr name="bounds">
+			<rectangle x="99" y="26" width="116" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="DeploymentUnitByTypeMSEntity3" nid="node14" type="DeploymentUnitByTypeMSEntity">
+		<attr name="bounds">
+			<rectangle x="28" y="319" width="214" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="48" nid="node0" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="440" y="338" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node10">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="432.0" y="343.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="360.0" y="461.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node15">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="432.0" y="343.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="491.0" y="248.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="FullCase" nid="node15" type="DeploymentPackage">
+		<attr name="bounds">
+			<rectangle x="547" y="231" width="116" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="DeploymentUnitByTypeMSEntity6" nid="node16" type="DeploymentUnitByTypeMSEntity">
+		<attr name="bounds">
+			<rectangle x="491" y="419" width="205" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="DeploymentUnitByTypeMSEntity4" nid="node11" type="DeploymentUnitByTypeMSEntity">
+		<attr name="bounds">
+			<rectangle x="31" y="420" width="208" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="DeploymentUnitByTypeMSEntity1" nid="node9" type="DeploymentUnitByTypeMSEntity">
+		<attr name="bounds">
+			<rectangle x="31" y="120" width="242" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="44" nid="node6" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="355" y="205" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node9">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="353.0" y="213.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="152.0" y="162.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node15">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="353.0" y="213.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="491.0" y="248.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="49" nid="node8" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="544" y="338" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node16">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="546.0" y="347.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="615.5" y="469.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node15">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="546.0" y="347.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="491.0" y="248.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="24" nid="node7" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="271" y="40" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node17">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="415.0" y="86.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="173.0" y="49.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node12">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="415.0" y="86.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="554.0" y="107.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="45" nid="node4" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="348" y="251" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node13">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="346.0" y="256.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="143.0" y="268.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node15">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="346.0" y="256.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="491.0" y="248.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="DeploymentUnitByTypeMSEntity0" nid="node17" type="DeploymentUnitByTypeMSEntity">
+		<attr name="bounds">
+			<rectangle x="437" y="8" width="324" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="47" nid="node2" type="DefinesDeployment">
+		<attr name="bounds">
+			<rectangle x="338" y="339" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node11">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="336.0" y="341.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="135.0" y="462.5"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+	</connected>
+	<connected id="node15">		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+		<attr name="points">
+			<list>
+		<attr name="points0">
+			<point x="336.0" y="341.5"></point>
+		</attr>
+		<attr name="points1">
+			<point x="491.0" y="248.0"></point>
+		</attr>
+
+</list>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	</node><parentship>
+</parentship>
+<entityconstraints>
+<cellconstraint id="node13:INGENIAS">
+<currentcell id="node13" height="61" width="172"/>
+</cellconstraint>
+<cellconstraint id="node10:INGENIAS">
+<currentcell id="node10" height="46" width="203"/>
+</cellconstraint>
+<cellconstraint id="node12:INGENIAS">
+<currentcell id="node12" height="46" width="77"/>
+</cellconstraint>
+<cellconstraint id="node14:INGENIAS">
+<currentcell id="node14" height="46" width="203"/>
+</cellconstraint>
+<cellconstraint id="node15:INGENIAS">
+<currentcell id="node15" height="46" width="52"/>
+</cellconstraint>
+<cellconstraint id="node16:INGENIAS">
+<currentcell id="node16" height="46" width="203"/>
+</cellconstraint>
+<cellconstraint id="node11:INGENIAS">
+<currentcell id="node11" height="46" width="203"/>
+</cellconstraint>
+<cellconstraint id="node9:INGENIAS">
+<currentcell id="node9" height="46" width="203"/>
+</cellconstraint>
+<cellconstraint id="node17:INGENIAS">
+<currentcell id="node17" height="46" width="203"/>
+</cellconstraint>
+</entityconstraints>
+
+
+	</graph>
+
+
+	<layout>
+			
+	<node id="node13">
+		<attr name="bounds">
+			<rectangle x="27" y="226" width="232" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node3">
+		<attr name="bounds">
+			<rectangle x="99" y="86" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node10">
+		<attr name="bounds">
+			<rectangle x="253" y="419" width="214" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node5">
+		<attr name="bounds">
+			<rectangle x="339" y="293" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node1">
+		<attr name="bounds">
+			<rectangle x="547" y="155" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node12">
+		<attr name="bounds">
+			<rectangle x="99" y="26" width="116" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node14">
+		<attr name="bounds">
+			<rectangle x="28" y="319" width="214" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node0">
+		<attr name="bounds">
+			<rectangle x="440" y="338" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node15">
+		<attr name="bounds">
+			<rectangle x="547" y="231" width="116" height="40"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node16">
+		<attr name="bounds">
+			<rectangle x="491" y="419" width="205" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node11">
+		<attr name="bounds">
+			<rectangle x="31" y="420" width="208" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node9">
+		<attr name="bounds">
+			<rectangle x="31" y="120" width="242" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node6">
+		<attr name="bounds">
+			<rectangle x="355" y="205" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node8">
+		<attr name="bounds">
+			<rectangle x="544" y="338" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node7">
+		<attr name="bounds">
+			<rectangle x="271" y="40" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node4">
+		<attr name="bounds">
+			<rectangle x="348" y="251" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node17">
+		<attr name="bounds">
+			<rectangle x="437" y="8" width="324" height="85"></rectangle>		</attr>
+		<attr name="view">
+			<string>UML</string>
+		</attr>
+
+
+
+	</node>
+			
+	<node id="node2">
+		<attr name="bounds">
+			<rectangle x="338" y="339" width="110" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	</node>
+	</layout>
+</gxl> </model>
+ <model id="intial state for agents" type="ingenias.editor.models.AgentModelModelJGraph">
+<object id="intial state for agents" type="ingenias.editor.entities.AgentModelDataEntity">
+<mapproperties>
+<key id="Description"></key>
+<key id="_view_type">INGENIAS</key>
+</mapproperties>
+</object>
+  <path>
+    <package id="Project"/>
+   </path>
+<gxl>
+
+	<graph>
+			
+	<node id="37" nid="node14" type="AContainsME">
+		<attr name="bounds">
+			<rectangle x="786" y="160" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node11">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node5">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="41" nid="node18" type="AContainsME">
+		<attr name="bounds">
+			<rectangle x="779" y="353" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node3">
 
 
 
@@ -2429,38 +4199,325 @@
 	</connected>
 	</node>
 			
-	<node id="SMClient" nid="node2" type="InternalApplication">
+	<node id="MentalInstanceSpecification6" nid="node4" type="MentalInstanceSpecification">
 		<attr name="bounds">
-			<rectangle x="11" y="221" width="451" height="85"></rectangle>		</attr>
+			<rectangle x="883" y="326" width="237" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="PVInitialSolar221" nid="node11" type="MentalState">
+		<attr name="bounds">
+			<rectangle x="650" y="145" width="129" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="BatteryInitialMentalStateBattery_31" nid="node0" type="MentalState">
+		<attr name="bounds">
+			<rectangle x="20" y="266" width="263" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="16" nid="node20" type="AContainsME">
+		<attr name="bounds">
+			<rectangle x="187" y="56" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
-			<string>UML</string>
+			<string>ingenias</string>
 		</attr>
 
 
 
+	<connected id="node6">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node1">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
 	</node>
 			
-	<node id="ReducePowerGridConsumption" nid="node0" type="Goal">
+	<node id="PVInitialSolar_311" nid="node3" type="MentalState">
 		<attr name="bounds">
-			<rectangle x="377" y="0" width="228" height="58"></rectangle>		</attr>
+			<rectangle x="617" y="338" width="136" height="42"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="CheckAgain" nid="node5" type="FrameFact">
+	<node id="PVinitialSolar_222" nid="node12" type="MentalState">
 		<attr name="bounds">
-			<rectangle x="501" y="150" width="75" height="32"></rectangle>		</attr>
+			<rectangle x="619" y="246" width="135" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="39" nid="node17" type="AContainsME">
+		<attr name="bounds">
+			<rectangle x="775" y="262" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node12">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node8">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="MentalInstanceSpecification1" nid="node7" type="MentalInstanceSpecification">
+		<attr name="bounds">
+			<rectangle x="311" y="246" width="287" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="MentalInstanceSpecification4" nid="node5" type="MentalInstanceSpecification">
+		<attr name="bounds">
+			<rectangle x="871" y="132" width="249" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="22" nid="node16" type="AContainsME">
+		<attr name="bounds">
+			<rectangle x="219" y="277" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node0">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node7">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="MentalInstanceSpecification2" nid="node2" type="MentalInstanceSpecification">
+		<attr name="bounds">
+			<rectangle x="312" y="131" width="282" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="19" nid="node15" type="AContainsME">
+		<attr name="bounds">
+			<rectangle x="208" y="163" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node9">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node2">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="PVInitialMSSolar_312" nid="node10" type="MentalState">
+		<attr name="bounds">
+			<rectangle x="649" y="33" width="159" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="36" nid="node19" type="AContainsME">
+		<attr name="bounds">
+			<rectangle x="824" y="47" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+
+	<connected id="node10">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	<connected id="node13">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+
+	</connected>
+	</node>
+			
+	<node id="MentalInstanceSpecification5" nid="node8" type="MentalInstanceSpecification">
+		<attr name="bounds">
+			<rectangle x="875" y="236" width="244" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="MentalInstanceSpecification0" nid="node1" type="MentalInstanceSpecification">
+		<attr name="bounds">
+			<rectangle x="282" y="23" width="337" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="PVInitialSolar21" nid="node9" type="MentalState">
+		<attr name="bounds">
+			<rectangle x="22" y="151" width="120" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="PVInitialMentalSolar11" nid="node6" type="MentalState">
+		<attr name="bounds">
+			<rectangle x="26" y="45" width="169" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="MentalInstanceSpecification3" nid="node13" type="MentalInstanceSpecification">
+		<attr name="bounds">
+			<rectangle x="918" y="18" width="257" height="73"></rectangle>		</attr>
 
 
 	</node><parentship>
 </parentship>
 <entityconstraints>
-<cellconstraint id="node4:INGENIAS">
-<currentcell id="node4" height="43" width="272"/>
-</cellconstraint>
-<cellconstraint id="node2:INGENIAS">
-<currentcell id="node2" height="46" width="125"/>
-</cellconstraint>
 </entityconstraints>
 
 
@@ -2469,9 +4526,9 @@
 
 	<layout>
 			
-	<node id="node10">
+	<node id="node14">
 		<attr name="bounds">
-			<rectangle x="270" y="100" width="70" height="15"></rectangle>		</attr>
+			<rectangle x="786" y="160" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2480,20 +4537,9 @@
 
 	</node>
 			
-	<node id="node9">
+	<node id="node18">
 		<attr name="bounds">
-			<rectangle x="359" y="178" width="80" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node8">
-		<attr name="bounds">
-			<rectangle x="178" y="194" width="52" height="15"></rectangle>		</attr>
+			<rectangle x="779" y="353" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2504,32 +4550,53 @@
 			
 	<node id="node4">
 		<attr name="bounds">
-			<rectangle x="47" y="138" width="274" height="40"></rectangle>		</attr>
+			<rectangle x="883" y="326" width="237" height="73"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node11">
+		<attr name="bounds">
+			<rectangle x="650" y="145" width="129" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node0">
+		<attr name="bounds">
+			<rectangle x="20" y="266" width="263" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node20">
+		<attr name="bounds">
+			<rectangle x="187" y="56" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
-			<string>UML</string>
+			<string>ingenias</string>
 		</attr>
 
 
 
 	</node>
 			
-	<node id="node1">
-		<attr name="bounds">
-			<rectangle x="141" y="27" width="81" height="57"></rectangle>		</attr>
-
-
-	</node>
-			
 	<node id="node3">
 		<attr name="bounds">
-			<rectangle x="450" y="68" width="170" height="58"></rectangle>		</attr>
+			<rectangle x="617" y="338" width="136" height="42"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="node6">
+	<node id="node12">
 		<attr name="bounds">
-			<rectangle x="349" y="116" width="70" height="15"></rectangle>		</attr>
+			<rectangle x="619" y="246" width="135" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node17">
+		<attr name="bounds">
+			<rectangle x="775" y="262" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2540,199 +4607,23 @@
 			
 	<node id="node7">
 		<attr name="bounds">
-			<rectangle x="138" y="104" width="89" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node2">
-		<attr name="bounds">
-			<rectangle x="11" y="221" width="451" height="85"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node0">
-		<attr name="bounds">
-			<rectangle x="377" y="0" width="228" height="58"></rectangle>		</attr>
+			<rectangle x="311" y="246" width="287" height="73"></rectangle>		</attr>
 
 
 	</node>
 			
 	<node id="node5">
 		<attr name="bounds">
-			<rectangle x="501" y="150" width="75" height="32"></rectangle>		</attr>
-
-
-	</node>
-	</layout>
-</gxl> </model>
- <model id="Grid deployment" type="ingenias.editor.models.DeployDiagramModelJGraph">
-<object id="Grid deployment" type="ingenias.editor.entities.DeployDiagramDataEntity">
-<mapproperties>
-<key id="Description"></key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-  <path>
-    <package id="Project"/>
-   </path>
-<gxl>
-
-	<graph>
-			
-	<node id="DeploymentUnitByTypeMSEntity0" nid="node1" type="DeploymentUnitByTypeMSEntity">
-		<attr name="bounds">
-			<rectangle x="343" y="36" width="257" height="85"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
+			<rectangle x="871" y="132" width="249" height="73"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="SampleCase" nid="node2" type="DeploymentPackage">
+	<node id="node16">
 		<attr name="bounds">
-			<rectangle x="47" y="110" width="116" height="40"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="24" nid="node4" type="DefinesDeployment">
-		<attr name="bounds">
-			<rectangle x="198" y="102" width="110" height="15"></rectangle>		</attr>
+			<rectangle x="219" y="277" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node1">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node2">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="25" nid="node3" type="DefinesDeployment">
-		<attr name="bounds">
-			<rectangle x="192" y="161" width="110" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node0">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node2">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="DeploymentUnitByTypeMSEntity1" nid="node0" type="DeploymentUnitByTypeMSEntity">
-		<attr name="bounds">
-			<rectangle x="332" y="180" width="228" height="85"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node><parentship>
-</parentship>
-<entityconstraints>
-<cellconstraint id="node1:INGENIAS">
-<currentcell id="node1" height="46" width="203"/>
-</cellconstraint>
-<cellconstraint id="node2:INGENIAS">
-<currentcell id="node2" height="46" width="77"/>
-</cellconstraint>
-<cellconstraint id="node0:INGENIAS">
-<currentcell id="node0" height="46" width="203"/>
-</cellconstraint>
-</entityconstraints>
-
-
-	</graph>
-
-
-	<layout>
-			
-	<node id="node1">
-		<attr name="bounds">
-			<rectangle x="343" y="36" width="257" height="85"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
 		</attr>
 
 
@@ -2741,18 +4632,14 @@
 			
 	<node id="node2">
 		<attr name="bounds">
-			<rectangle x="47" y="110" width="116" height="40"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
+			<rectangle x="312" y="131" width="282" height="73"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="node4">
+	<node id="node15">
 		<attr name="bounds">
-			<rectangle x="198" y="102" width="110" height="15"></rectangle>		</attr>
+			<rectangle x="208" y="163" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2761,9 +4648,16 @@
 
 	</node>
 			
-	<node id="node3">
+	<node id="node10">
 		<attr name="bounds">
-			<rectangle x="192" y="161" width="110" height="15"></rectangle>		</attr>
+			<rectangle x="649" y="33" width="159" height="42"></rectangle>		</attr>
+
+
+	</node>
+			
+	<node id="node19">
+		<attr name="bounds">
+			<rectangle x="824" y="47" width="79" height="15"></rectangle>		</attr>
 		<attr name="view">
 			<string>ingenias</string>
 		</attr>
@@ -2772,390 +4666,37 @@
 
 	</node>
 			
-	<node id="node0">
+	<node id="node8">
 		<attr name="bounds">
-			<rectangle x="332" y="180" width="228" height="85"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-	</layout>
-</gxl> </model>
- <model id="intial state CT1" type="ingenias.editor.models.AgentModelModelJGraph">
-<object id="intial state CT1" type="ingenias.editor.entities.AgentModelDataEntity">
-<mapproperties>
-<key id="Description"></key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-  <path>
-    <package id="Project"/>
-   </path>
-<gxl>
-
-	<graph>
-			
-	<node id="MentalInstanceSpecification0" nid="node2" type="MentalInstanceSpecification">
-		<attr name="bounds">
-			<rectangle x="411" y="33" width="262" height="73"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="PVInitialMentalState" nid="node0" type="MentalState">
-		<attr name="bounds">
-			<rectangle x="44" y="89" width="152" height="42"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="16" nid="node4" type="AContainsME">
-		<attr name="bounds">
-			<rectangle x="281" y="84" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node0">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node2">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="MentalInstanceSpecification2" nid="node1" type="MentalInstanceSpecification">
-		<attr name="bounds">
-			<rectangle x="400" y="142" width="227" height="55"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="30" nid="node5" type="AContainsME">
-		<attr name="bounds">
-			<rectangle x="275" y="131" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node0">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node1">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="AssociatedUnit" nid="node3" type="FrameFact">
-		<attr name="bounds">
-			<rectangle x="117" y="256" width="178" height="55"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node><parentship>
-</parentship>
-<entityconstraints>
-<cellconstraint id="node3:INGENIAS">
-<currentcell id="node3" height="32" width="96"/>
-</cellconstraint>
-</entityconstraints>
-
-
-	</graph>
-
-
-	<layout>
-			
-	<node id="node2">
-		<attr name="bounds">
-			<rectangle x="411" y="33" width="262" height="73"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node0">
-		<attr name="bounds">
-			<rectangle x="44" y="89" width="152" height="42"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node4">
-		<attr name="bounds">
-			<rectangle x="281" y="84" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
+			<rectangle x="875" y="236" width="244" height="73"></rectangle>		</attr>
 
 
 	</node>
 			
 	<node id="node1">
 		<attr name="bounds">
-			<rectangle x="400" y="142" width="227" height="55"></rectangle>		</attr>
+			<rectangle x="282" y="23" width="337" height="73"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="node5">
+	<node id="node9">
 		<attr name="bounds">
-			<rectangle x="275" y="131" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
+			<rectangle x="22" y="151" width="120" height="42"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="node3">
+	<node id="node6">
 		<attr name="bounds">
-			<rectangle x="117" y="256" width="178" height="55"></rectangle>		</attr>
-		<attr name="view">
-			<string>UML</string>
-		</attr>
-
-
-
-	</node>
-	</layout>
-</gxl> </model>
- <model id="initial state CT3" type="ingenias.editor.models.AgentModelModelJGraph">
-<object id="initial state CT3" type="ingenias.editor.entities.AgentModelDataEntity">
-<mapproperties>
-<key id="Description"></key>
-<key id="_view_type">INGENIAS</key>
-</mapproperties>
-</object>
-  <path>
-    <package id="Project"/>
-   </path>
-<gxl>
-
-	<graph>
-			
-	<node id="MentalInstanceSpecification1" nid="node0" type="MentalInstanceSpecification">
-		<attr name="bounds">
-			<rectangle x="362" y="40" width="252" height="73"></rectangle>		</attr>
+			<rectangle x="26" y="45" width="169" height="42"></rectangle>		</attr>
 
 
 	</node>
 			
-	<node id="22" nid="node4" type="AContainsME">
+	<node id="node13">
 		<attr name="bounds">
-			<rectangle x="248" y="98" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node1">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node0">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node>
-			
-	<node id="BatteryInitialMentalState" nid="node1" type="MentalState">
-		<attr name="bounds">
-			<rectangle x="27" y="109" width="185" height="42"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="MentalInstanceSpecification2" nid="node2" type="MentalInstanceSpecification">
-		<attr name="bounds">
-			<rectangle x="395" y="146" width="227" height="55"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="31" nid="node3" type="AContainsME">
-		<attr name="bounds">
-			<rectangle x="264" y="143" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	<connected id="node1">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	<connected id="node2">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-
-	</connected>
-	</node><parentship>
-</parentship>
-<entityconstraints>
-</entityconstraints>
-
-
-	</graph>
-
-
-	<layout>
-			
-	<node id="node0">
-		<attr name="bounds">
-			<rectangle x="362" y="40" width="252" height="73"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node4">
-		<attr name="bounds">
-			<rectangle x="248" y="98" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-
-	</node>
-			
-	<node id="node1">
-		<attr name="bounds">
-			<rectangle x="27" y="109" width="185" height="42"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node2">
-		<attr name="bounds">
-			<rectangle x="395" y="146" width="227" height="55"></rectangle>		</attr>
-
-
-	</node>
-			
-	<node id="node3">
-		<attr name="bounds">
-			<rectangle x="264" y="143" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
+			<rectangle x="918" y="18" width="257" height="73"></rectangle>		</attr>
 
 
 	</node>
@@ -3175,16 +4716,51 @@
 
 	<graph>
 			
-	<node id="Analyse current status and enable battery if full" nid="node3" type="Task">
+	<node id="INGENIASCodeComponent1" nid="node1" type="INGENIASCodeComponent">
 		<attr name="bounds">
-			<rectangle x="77" y="213" width="299" height="43"></rectangle>		</attr>
+			<rectangle x="647" y="202" width="204" height="57"></rectangle>		</attr>
 
 	</node>
 			
-	<node id="INGENIASCodeComponent0" nid="node0" type="INGENIASCodeComponent">
+	<node id="34" nid="node4" type="CDUsesCode">
 		<attr name="bounds">
-			<rectangle x="633" y="37" width="204" height="57"></rectangle>		</attr>
+			<rectangle x="459" y="59" width="79" height="17"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
 
+
+	<connected id="node0">
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+	</connected>
+	<connected id="node2">
+
+
+
+
+
+		<attr name="labelposition">
+			<point x="500.0" y="-20.0"></point>
+		</attr>
+
+
+
+
+
+
+	</connected>
 	</node>
 			
 	<node id="35" nid="node5" type="CDUsesCode">
@@ -3228,57 +4804,22 @@
 	</connected>
 	</node>
 			
-	<node id="Enable PV if high demand and disable if low" nid="node2" type="Task">
+	<node id="Enable PV Panels" nid="node0" type="Task">
 		<attr name="bounds">
 			<rectangle x="91" y="48" width="272" height="43"></rectangle>		</attr>
 
 	</node>
 			
-	<node id="INGENIASCodeComponent1" nid="node1" type="INGENIASCodeComponent">
+	<node id="Analyse current status and enable battery if full" nid="node3" type="Task">
 		<attr name="bounds">
-			<rectangle x="647" y="202" width="204" height="57"></rectangle>		</attr>
+			<rectangle x="77" y="213" width="299" height="43"></rectangle>		</attr>
 
 	</node>
 			
-	<node id="34" nid="node4" type="CDUsesCode">
+	<node id="INGENIASCodeComponent0" nid="node2" type="INGENIASCodeComponent">
 		<attr name="bounds">
-			<rectangle x="459" y="59" width="79" height="17"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
+			<rectangle x="633" y="37" width="204" height="57"></rectangle>		</attr>
 
-
-	<connected id="node2">
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-	</connected>
-	<connected id="node0">
-
-
-
-
-
-		<attr name="labelposition">
-			<point x="500.0" y="-20.0"></point>
-		</attr>
-
-
-
-
-
-
-	</connected>
 	</node><parentship>
 </parentship>
 <entityconstraints>
@@ -3289,34 +4830,6 @@
 
 
 	<layout>
-			
-	<node id="node3">
-		<attr name="bounds">
-			<rectangle x="77" y="213" width="299" height="43"></rectangle>		</attr>
-
-	</node>
-			
-	<node id="node0">
-		<attr name="bounds">
-			<rectangle x="633" y="37" width="204" height="57"></rectangle>		</attr>
-
-	</node>
-			
-	<node id="node5">
-		<attr name="bounds">
-			<rectangle x="472" y="225" width="79" height="15"></rectangle>		</attr>
-		<attr name="view">
-			<string>ingenias</string>
-		</attr>
-
-
-	</node>
-			
-	<node id="node2">
-		<attr name="bounds">
-			<rectangle x="91" y="48" width="272" height="43"></rectangle>		</attr>
-
-	</node>
 			
 	<node id="node1">
 		<attr name="bounds">
@@ -3331,6 +4844,34 @@
 			<string>ingenias</string>
 		</attr>
 
+
+	</node>
+			
+	<node id="node5">
+		<attr name="bounds">
+			<rectangle x="472" y="225" width="79" height="15"></rectangle>		</attr>
+		<attr name="view">
+			<string>ingenias</string>
+		</attr>
+
+
+	</node>
+			
+	<node id="node0">
+		<attr name="bounds">
+			<rectangle x="91" y="48" width="272" height="43"></rectangle>		</attr>
+
+	</node>
+			
+	<node id="node3">
+		<attr name="bounds">
+			<rectangle x="77" y="213" width="299" height="43"></rectangle>		</attr>
+
+	</node>
+			
+	<node id="node2">
+		<attr name="bounds">
+			<rectangle x="633" y="37" width="204" height="57"></rectangle>		</attr>
 
 	</node>
 	</layout>

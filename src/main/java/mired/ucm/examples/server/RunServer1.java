@@ -85,9 +85,9 @@ public class RunServer1 {
 	}
 
 	public static SGServer runServer() throws IOException,
-	java.rmi.AlreadyBoundException, GridlabException,
-	ParserConfigurationException, SAXException, InterruptedException,
-	RemoteException, NotBoundException {
+			java.rmi.AlreadyBoundException, GridlabException,
+			ParserConfigurationException, SAXException, InterruptedException,
+			RemoteException, NotBoundException {
 
 		Tariff tarrif = new TariffExample();
 		Calendar calendar = Calendar.getInstance();
@@ -137,87 +137,87 @@ public class RunServer1 {
 		File output = File.createTempFile("record", ".csv", new File("target"));
 		final FileOutputStream fos = new FileOutputStream(output);
 		server.getSimulatorDisplayer().getGridLabDiscreteEventSimulator()
-		.registerListener(new NetworkListener() {
+				.registerListener(new NetworkListener() {
 
-			@Override
-			public void processStatus(
-					Hashtable<SensorIDS, Float> sensorValues,
-					Date timestamp) {
-			}
+					@Override
+					public void processStatus(
+							Hashtable<SensorIDS, Float> sensorValues,
+							Date timestamp) {
+					}
 
-			@Override
-			public void processEvent(Event event) {
-				try {
-					fos.write((";;" + event.getTimestamp() + ";"
-							+ event.getDeviceName() + ";").getBytes());
-					fos.flush();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-
-			Vector<String> sensorOrder = new Vector<String>();
-			Vector<Order> alreadyVisualizedOrders=new Vector<Order>();
-			Date lastTimeStamp=null;
-			@Override
-			public void processCycleStatus(NetworkStatus ns,
-					NetworkElementsStatus nes, Date timestamp) {
-
-				try {
-					if (sensorOrder.isEmpty()) {
-						// first iteration. Headers are written
-						for (SensorIDS sensor : ns
-								.getSubstationSensors().keySet()) {
-							sensorOrder.add(sensor.toString());
+					@Override
+					public void processEvent(Event event) {
+						try {
+							fos.write((";;" + event.getTimestamp() + ";"
+									+ event.getDeviceName() + ";").getBytes());
+							fos.flush();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-						fos.write(("timestamp;overvoltage;").getBytes());
-						for (String sid : sensorOrder) {
-							fos.write(("" + sid + ";").getBytes());
-						};
+					}
 
-						fos.write("executedOrders\n".getBytes());
+					Vector<String> sensorOrder = new Vector<String>();
+					Vector<Order> alreadyVisualizedOrders = new Vector<Order>();
+					Date lastTimeStamp = null;
+					@Override
+					public void processCycleStatus(NetworkStatus ns,
+							NetworkElementsStatus nes, Date timestamp) {
+
+						try {
+							if (sensorOrder.isEmpty()) {
+								// first iteration. Headers are written
+								for (SensorIDS sensor : ns
+										.getSubstationSensors().keySet()) {
+									sensorOrder.add(sensor.toString());
+								}
+								fos.write(("timestamp;overvoltage;").getBytes());
+								for (String sid : sensorOrder) {
+									fos.write(("" + sid + ";").getBytes());
+								};
+
+								fos.write("executedOrders\n".getBytes());
+
+							}
+							// sensor data is written in the same order
+							// everytime
+							fos.write((timestamp + ";"
+									+ ns.thereIsOvervoltage() + ";").getBytes());
+							double[] values = new double[sensorOrder.size()];
+							for (SensorIDS sensor : ns.getSubstationSensors()
+									.keySet()) {
+								values[sensorOrder.indexOf(sensor.toString())] = ns
+										.getSubstationSensor(sensor);
+							}
+							for (int k = 0; k < values.length; k++) {
+								fos.write(("" + values[k] + ";").getBytes());
+							}
+							Vector<Order> orders = new Vector<Order>();
+							if (lastTimeStamp != null) {
+								orders = server
+										.getAppliedOrdersSince(lastTimeStamp);
+								orders.removeAll(alreadyVisualizedOrders);
+								alreadyVisualizedOrders.addAll(orders);
+
+							}
+							lastTimeStamp = timestamp;
+							fos.write(orders.toString().getBytes());
+							fos.write("\n".getBytes());
+
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (UnknownSensor e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+
+					@Override
+					public void overvoltageEvent(Date timestamp) {
 
 					}
-					// sensor data is written in the same order
-					// everytime
-					fos.write((timestamp + ";"
-							+ ns.thereIsOvervoltage() + ";").getBytes());
-					double[] values = new double[sensorOrder.size()];
-					for (SensorIDS sensor : ns.getSubstationSensors()
-							.keySet()) {
-						values[sensorOrder.indexOf(sensor.toString())] = ns
-								.getSubstationSensor(sensor);
-					}
-					for (int k = 0; k < values.length; k++) {
-						fos.write(("" + values[k] + ";").getBytes());
-					}
-					Vector<Order> orders = new Vector<Order>();
-					if (lastTimeStamp!=null){
-						orders=server.getAppliedOrdersSince(lastTimeStamp);
-						orders.removeAll(alreadyVisualizedOrders);
-						alreadyVisualizedOrders.addAll(orders);
-						
-					}
-					lastTimeStamp=timestamp;
-					fos.write(
-							orders.toString().getBytes());
-					fos.write("\n".getBytes());
-
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (UnknownSensor e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-
-			@Override
-			public void overvoltageEvent(Date timestamp) {
-
-			}
-		});
+				});
 	}
 
 	public static void main(String args[]) throws Exception {

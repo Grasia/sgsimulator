@@ -76,7 +76,8 @@ public class RunClient {
 		// UnicastRemoteObject.unexportObject(registry, true);
 	}
 
-	public static void launch(SGClient client) throws Exception {
+	public static void launchAndWaitForServerShutdown(SGClient client)
+			throws Exception {
 		setup();
 		// Creates a client and tries to launch it a number of times
 		// before giving up
@@ -86,6 +87,7 @@ public class RunClient {
 			try {
 				// Gets the remote server reference and registers the client
 				tryLaunchingClient(client);
+				System.out.println("Client launched");
 				failed = false;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -102,8 +104,10 @@ public class RunClient {
 			throws RemoteException, NotBoundException, AccessException,
 			AlreadyBoundException, InterruptedException {
 
+		System.out.println("Looking for the server");
 		RemoteSGServer stub = (RemoteSGServer) getRegistry().lookup(
 				SGServer.getDefaultRemoteServerName());
+		System.out.println("Server found");
 		// after creating it, it starts delivering orders
 		client.serverStarted(stub);
 		// Wait for simulation to end

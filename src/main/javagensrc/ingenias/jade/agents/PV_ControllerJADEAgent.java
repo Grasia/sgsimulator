@@ -121,8 +121,7 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 
 		nonExistingInputs.clear();
 		repeatedOutputs.clear();
-		if (tobject.getType().equals(
-				"Enable_PV_if_high_demand_and_disable_if_low")) {
+		if (tobject.getType().equals("Enable_PV_Panels")) {
 			Vector<MentalEntity> expectedInput = null;
 			RuntimeFact expectedOutput = null;
 			RuntimeEvent expectedOutputEvent = null;
@@ -276,7 +275,7 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 				Task tobject = null;
 				// If a conversational initialization fails, a conventional one
 				// is tried
-				tobject = new Enable_PV_if_high_demand_and_disable_if_lowTask(
+				tobject = new Enable_PV_PanelsTask(
 						ingenias.jade.MentalStateManager
 								.generateMentalEntityID());
 				canbescheduled = initialiseNonConversationalTask(tobject);
@@ -304,7 +303,7 @@ public class PV_ControllerJADEAgent extends JADEAgent {
 		super.setup();
 		Vector<String> ttypes = new Vector<String>();
 
-		ttypes.add("Enable_PV_if_high_demand_and_disable_if_low");
+		ttypes.add("Enable_PV_Panels");
 
 		if (IAFProperties.getGraphicsOn())
 			this.getGraphics().setKnownTasks(ttypes);

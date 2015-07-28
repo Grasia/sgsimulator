@@ -159,6 +159,87 @@ This is the macro definition for maven Ant task
   </target>
   
   <!-- ***********************  -->
+  <!-- Node FullCase -->
+  <!-- ***********************  -->
+  <!--   Runs a MAS created with the jade module and contained in the node FullCase -->
+   <target name="runFullCaseProdStandAlone" depends="compileproject">
+    <mkdir dir="target/jade"/>
+    <java fork="true" failonerror="true" maxmemory="128m"
+    classname="ingenias.jade.MainFullCaseProdStandAlone">
+    <arg line="60000"/>
+		<classpath>		
+			<pathelement path="${maven.build.outputDir}" />     
+			<pathelement path="${ingeniasmavenclasspath}" />	  
+			<pathelement path="${mavenclasspath}" />     
+		</classpath>
+    </java>
+  </target>
+
+  <target name="runFullCase" depends="compileproject">
+    <java fork="true" failonerror="true" maxmemory="128m"
+    classname="ingenias.jade.MainFullCase">
+    <arg line="60000"/> 
+    	<classpath>			  
+			<pathelement path="${maven.build.outputDir}" />    
+			<pathelement path="${ingeniasmavenclasspath}" /> 
+			<pathelement path="${mavenclasspath}" />          
+		</classpath>
+    </java>
+  </target>
+
+  <target name="runPauseFullCase" depends="compileproject">
+    <java fork="true" failonerror="true" maxmemory="128m"
+    classname="ingenias.jade.MainFullCase">
+    <arg line="60000 pause"/> 
+    	<classpath>			  
+			<pathelement path="${maven.build.outputDir}" />     
+			<pathelement path="${ingeniasmavenclasspath}" />
+			<pathelement path="${mavenclasspath}" />          
+		</classpath>
+    </java>
+  </target>
+  
+   <target name="runjadeFullCase" depends="getclasspathfrommaven">
+   <mkdir dir="target/jade"/>
+    <java fork="true" failonerror="true" maxmemory="128m"
+    classname="jade.Boot">
+	<arg line="-gui -port 60000 -mtp 'jade.mtp.http.MessageTransportProtocol(http://127.0.0.1:60001/acc)' -file-dir target/jade/"/>
+      	<classpath>					
+			<pathelement path="${maven.build.outputDir}" />   
+			<pathelement path="${ingeniasmavenclasspath}" />
+			<pathelement path="${mavenclasspath}" />        
+		</classpath>
+    </java>
+  </target>
+  
+   <target name="runfederatedjadeFullCase" depends="getclasspathfrommaven">
+    <mkdir dir="target/jade"/>
+    <java fork="true" failonerror="true" maxmemory="128m"
+    classname="jade.Boot">
+    <arg line="-gui -port 60000 -mtp 'jade.mtp.http.MessageTransportProtocol(http://127.0.0.1:60001/acc)' -file-dir target/jade subDF:jade.domain.df federator:jade.misc.DFFederatorAgent(resources/DFFederatorAgent.properties)"/>	
+		<classpath>		  
+			<pathelement path="${maven.build.outputDir}" />    
+			<pathelement path="${ingeniasmavenclasspath}" />	
+			<pathelement path="${mavenclasspath}" />    
+		</classpath>
+    </java>
+  </target>
+  
+  <target name="debugFullCase" depends="compileproject">
+	  
+	  <java fork="true" failonerror="true" maxmemory="256m"
+		classname="ingenias.jade.MainFullCase">
+		  <jvmarg line="-Xdebug -Xrunjdwp:transport=dt_socket,address=60005,server=y,suspend=n"/>
+		 <arg line="60000"/>
+		<classpath>		  
+			<pathelement path="${maven.build.outputDir}" />     
+			<pathelement path="${ingeniasmavenclasspath}" />
+			<pathelement path="${mavenclasspath}" />        
+		</classpath>
+	  </java>
+  </target>
+  
+  <!-- ***********************  -->
   <!-- Node  -->
   <!-- ***********************  -->
   <!--   Runs a MAS created with the jade module and contained in the node  -->

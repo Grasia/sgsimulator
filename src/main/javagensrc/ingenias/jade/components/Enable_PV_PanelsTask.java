@@ -33,12 +33,13 @@ import ingenias.editor.entities.*;
 /**
  * 
  * <p>
- * The Task Analyse_current_status_and_enable_battery_if_full has the following
- * inputs, sets of possible outputs, and available applications:
+ * The Task Enable_PV_Panels has the following inputs, sets of possible outputs,
+ * and available applications:
  * </p>
  * Inputs:
  * <ul>
- * <li>_TimeTick2</li>
+ * <li>_TimeTick1</li>
+ * <li>AssociatedUnit</li>
  * 
  * 
  * 
@@ -53,18 +54,21 @@ import ingenias.editor.entities.*;
  * 
  * </ul>
  */
-public class Analyse_current_status_and_enable_battery_if_fullTask extends Task {
+public class Enable_PV_PanelsTask extends Task {
 
-	public Analyse_current_status_and_enable_battery_if_fullTask(String id) {
-		super(id, "Analyse_current_status_and_enable_battery_if_full");
+	public Enable_PV_PanelsTask(String id) {
+		super(id, "Enable_PV_Panels");
 
 	}
 
 	public void execute() throws TaskException {
 		YellowPages yp = null; // only available for initiators of interactions
 
-		_TimeTick2 ei_TimeTick2 = (_TimeTick2) this
-				.getFirstInputOfType("_TimeTick2");
+		_TimeTick1 ei_TimeTick1 = (_TimeTick1) this
+				.getFirstInputOfType("_TimeTick1");
+
+		AssociatedUnit eiAssociatedUnit = (AssociatedUnit) this
+				.getFirstInputOfType("AssociatedUnit");
 
 		SMClientApp eaSMClient = (SMClientApp) this.getApplication("SMClient");
 
@@ -86,41 +90,21 @@ public class Analyse_current_status_and_enable_battery_if_fullTask extends Task 
 		// --------------------------------------------------------
 
 		// Code Area
-		// #start_node:INGENIASCodeComponent1 <--- DO NOT REMOVE THIS
-		// REPLACE THIS COMMENT WITH YOUR CODE
+		// #start_node:INGENIASCodeComponent0 <--- DO NOT REMOVE THIS
 		System.out.println(getAgentID() + " executing -> " + getID() + ":"
 				+ getType());
-
 		if (!eaSMClient.isReady())
 			eaSMClient.tryItAgainAfter(5);
-
 		try {
-			// Charges the battery
-			if (eaSMClient.getBatteryEnergy("Battery_31") <= 10000) {
-				System.out.println(getAgentID() + " charging");
-				eaSMClient
-						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
-								"Battery_31", 10000));
-			}
-		} catch (java.rmi.RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		try {
-			// Discharges battery
-			if (eaSMClient.getBatteryEnergy("Battery_31") > 10000) {
-				System.out.println(getAgentID() + " discharging");
-				eaSMClient
-						.sendOrder(new mired.ucm.remote.orders.RemoteBatteryOrder(
-								"Battery_31", 0));
-			}
+			// Switches on the PV
+			eaSMClient.sendOrder(new mired.ucm.remote.orders.RemoteSwitchOn(
+					"Solar_11"));
+			System.out.println(eaSMClient.getTransformationCentreSensors());
 		} catch (java.rmi.RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		eaSMClient.tryItAgainAfter(10);
-		// #end_node:INGENIASCodeComponent1 <--- DO NOT REMOVE THIS
+		// #end_node:INGENIASCodeComponent0 <--- DO NOT REMOVE THIS
 
 	}
 
