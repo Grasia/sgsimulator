@@ -24,3 +24,10 @@ Finally, you can choose which deployment to execute
 To check and edit the agent specification, run "ant edit". Go to http://ingenias.sf.net for more instructions about INGENIAS and how to compile/deploy this kind of systems.
 
 The smartgrid simulator can be checked and downloaded at http://sgsimulator.sf.net.
+
+#Credits
+
+This software is one of the results of the MIRED-CON project made by the GRASIA group on behalf the UCM. The project main investigator from UCM was Jorge J. Gomez-Sanz. The software was developed by Sandra García Rodríguez, Nuria Cuartero Soler, and Jorge J. Gomez-Sanz.
+
+The base simulation is made with GridLab-D. We thank the developers of this great framework their support for dealing with some bugs and questions we had along the development.
+
